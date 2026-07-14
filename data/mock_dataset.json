@@ -1,0 +1,632 @@
+[
+  {
+    "source_type": "jira",
+    "author": "Alice",
+    "content": "Ticket CHRONO-109: 'Draft IAM mapping criteria AWS to GCP' | Status: Done | Assignee: Eve",
+    "source_id": "rec_001",
+    "timestamp": "2023-01-02T15:17:11+00:00"
+  },
+  {
+    "source_type": "jira",
+    "author": "Alice",
+    "content": "Ticket CHRONO-102: 'Assess Database Migration Risk from RDS PostgreSQL to GCP Cloud SQL' | Status: In Progress | Assignee: Bob",
+    "source_id": "rec_002",
+    "timestamp": "2023-01-06T05:33:30+00:00"
+  },
+  {
+    "source_type": "git",
+    "author": "Charlie",
+    "content": "feat: add GCP project setup scripts for POC environment",
+    "source_id": "rec_003",
+    "timestamp": "2023-01-06T12:39:59+00:00"
+  },
+  {
+    "source_type": "slack",
+    "author": "Dave",
+    "content": "I agree with Bob there. Run a POC before committing the team. I still argue against moving the core databases.",
+    "source_id": "rec_004",
+    "timestamp": "2023-01-07T03:51:54+00:00"
+  },
+  {
+    "source_type": "git",
+    "author": "Dave",
+    "content": "test: write mock workload scripts for AWS RDS benchmarks",
+    "source_id": "rec_005",
+    "timestamp": "2023-01-07T13:07:04+00:00"
+  },
+  {
+    "source_type": "jira",
+    "author": "Alice",
+    "content": "Ticket CHRONO-107: 'Review AWS S3 data backup size and transfer speed limits' | Status: Done | Assignee: Eve",
+    "source_id": "rec_006",
+    "timestamp": "2023-01-09T19:29:37+00:00"
+  },
+  {
+    "source_type": "slack",
+    "author": "Dave",
+    "content": "Redshift is working fine if we tune our distribution keys properly. Pushing for GCP means we have to re-evaluate our whole infrastructure. AWS is stable and we know it.",
+    "source_id": "rec_007",
+    "timestamp": "2023-01-10T06:33:25+00:00"
+  },
+  {
+    "source_type": "slack",
+    "author": "Charlie",
+    "content": "Hey team, with our growing data warehousing needs, we should really look into GCP BigQuery instead of trying to optimize Amazon Redshift. GCP's GKE options also look much cleaner for our container workloads.",
+    "source_id": "rec_008",
+    "timestamp": "2023-01-14T21:09:01+00:00"
+  },
+  {
+    "source_type": "git",
+    "author": "Dave",
+    "content": "ci: update github actions to include aws-cli dependencies",
+    "source_id": "rec_009",
+    "timestamp": "2023-01-16T16:14:07+00:00"
+  },
+  {
+    "source_type": "slack",
+    "author": "Bob",
+    "content": "My biggest concern is the database migration. Moving our primary Postgres database from AWS RDS to GCP Cloud SQL is going to be high-risk. We need to be careful with downtime.",
+    "source_id": "rec_010",
+    "timestamp": "2023-01-16T20:51:27+00:00"
+  },
+  {
+    "source_type": "jira",
+    "author": "Alice",
+    "content": "Ticket CHRONO-106: 'Draft GCP Landing Zone security requirements template' | Status: Done | Assignee: Dave",
+    "source_id": "rec_011",
+    "timestamp": "2023-01-18T06:09:51+00:00"
+  },
+  {
+    "source_type": "slack",
+    "author": "Alice",
+    "content": "Great, let's make that a plan. I will create some Jira tickets for the AWS/GCP analysis and POC planning. Bob, can you lead the database risk analysis?",
+    "source_id": "rec_012",
+    "timestamp": "2023-01-19T09:13:37+00:00"
+  },
+  {
+    "source_type": "slack",
+    "author": "Charlie",
+    "content": "Thanks Alice, will do. Bob, Cloud SQL has some great replication tools that can sync with external databases. I'll include a section on migrating PostgreSQL.",
+    "source_id": "rec_013",
+    "timestamp": "2023-01-19T13:39:05+00:00"
+  },
+  {
+    "source_type": "jira",
+    "author": "Alice",
+    "content": "Ticket CHRONO-101: 'Research AWS vs GCP Migration Costs and Performance Benefits' | Status: To Do | Assignee: Charlie",
+    "source_id": "rec_014",
+    "timestamp": "2023-01-20T03:43:51+00:00"
+  },
+  {
+    "source_type": "git",
+    "author": "Bob",
+    "content": "docs: analyze pg_dump and logical replication options for RDS Postgres",
+    "source_id": "rec_015",
+    "timestamp": "2023-01-20T23:42:02+00:00"
+  },
+  {
+    "source_type": "git",
+    "author": "Charlie",
+    "content": "chore: setup terraform remote state bucket in GCS",
+    "source_id": "rec_016",
+    "timestamp": "2023-01-21T05:20:03+00:00"
+  },
+  {
+    "source_type": "slack",
+    "author": "Charlie",
+    "content": "GCP IAM uses projects and folders which actually makes resource organization a lot easier than AWS account hierarchies. I advocate for migrating containerized apps first.",
+    "source_id": "rec_017",
+    "timestamp": "2023-01-21T06:39:43+00:00"
+  },
+  {
+    "source_type": "git",
+    "author": "Eve",
+    "content": "docs: research GCP IAM project folder architecture structures",
+    "source_id": "rec_018",
+    "timestamp": "2023-01-22T23:50:25+00:00"
+  },
+  {
+    "source_type": "jira",
+    "author": "Bob",
+    "content": "Ticket CHRONO-104: 'Measure Network Latency between AWS VPC and GCP VPC' | Status: Done | Assignee: Bob",
+    "source_id": "rec_019",
+    "timestamp": "2023-01-25T14:43:55+00:00"
+  },
+  {
+    "source_type": "slack",
+    "author": "Alice",
+    "content": "Let's keep an open mind. If GCP can offer cost optimizations and simplify DevOps overhead, it might be worth exploring. Charlie, can you write up a quick comparative doc?",
+    "source_id": "rec_020",
+    "timestamp": "2023-01-28T11:17:37+00:00"
+  },
+  {
+    "source_type": "jira",
+    "author": "Alice",
+    "content": "Ticket CHRONO-108: 'Document GKE container registry migration steps' | Status: Done | Assignee: Charlie",
+    "source_id": "rec_021",
+    "timestamp": "2023-01-31T13:35:13+00:00"
+  },
+  {
+    "source_type": "slack",
+    "author": "Dave",
+    "content": "GCP's IAM is completely different. In AWS, we have fine-grained control with IAM policies we already tested. Don't underestimate the security migration effort.",
+    "source_id": "rec_022",
+    "timestamp": "2023-02-01T09:03:58+00:00"
+  },
+  {
+    "source_type": "jira",
+    "author": "Charlie",
+    "content": "Ticket CHRONO-103: 'Create GCP Proof-of-Concept Project & Structure' | Status: Done | Assignee: Charlie",
+    "source_id": "rec_023",
+    "timestamp": "2023-02-07T17:07:47+00:00"
+  },
+  {
+    "source_type": "jira",
+    "author": "Alice",
+    "content": "Ticket CHRONO-105: 'Hold Architecture Review for GCP Migration Plan' | Status: Done | Assignee: Bob",
+    "source_id": "rec_024",
+    "timestamp": "2023-02-08T23:39:02+00:00"
+  },
+  {
+    "source_type": "slack",
+    "author": "Eve",
+    "content": "I'd love to help on this check! I can help research the security/IAM mappings between AWS and GCP. It'll be a great learning experience.",
+    "source_id": "rec_025",
+    "timestamp": "2023-02-12T04:26:05+00:00"
+  },
+  {
+    "source_type": "slack",
+    "author": "Bob",
+    "content": "Yep, I'll take a look at PG replication limitations. Eve, can you help me document the network latency between AWS and GCP?",
+    "source_id": "rec_026",
+    "timestamp": "2023-02-12T19:55:36+00:00"
+  },
+  {
+    "source_type": "git",
+    "author": "Bob",
+    "content": "docs: analyze AWS IAM policy limitations on transit gateways",
+    "source_id": "rec_027",
+    "timestamp": "2023-02-13T04:19:39+00:00"
+  },
+  {
+    "source_type": "git",
+    "author": "Dave",
+    "content": "test: add network benchmark script for AWS EC2 instance nodes",
+    "source_id": "rec_028",
+    "timestamp": "2023-02-13T17:14:14+00:00"
+  },
+  {
+    "source_type": "slack",
+    "author": "Bob",
+    "content": "Let's not jump directly to migration. I would advocate for running a microservice POC on GCP first. AWS is our safety net.",
+    "source_id": "rec_029",
+    "timestamp": "2023-02-14T15:04:58+00:00"
+  },
+  {
+    "source_type": "git",
+    "author": "Charlie",
+    "content": "chore: initialize terraform layout for GCP landing zone tests",
+    "source_id": "rec_030",
+    "timestamp": "2023-02-15T13:16:42+00:00"
+  },
+  {
+    "source_type": "slack",
+    "author": "Charlie",
+    "content": "That is great news. I started setting up Terraform for our GCP foundation. It's so much cleaner than CloudFormation. GCP rules!",
+    "source_id": "rec_031",
+    "timestamp": "2023-02-15T13:53:02+00:00"
+  },
+  {
+    "source_type": "git",
+    "author": "Eve",
+    "content": "docs: add mapping outline of AWS IAM roles to GCP service accounts",
+    "source_id": "rec_032",
+    "timestamp": "2023-02-17T22:16:43+00:00"
+  },
+  {
+    "source_type": "jira",
+    "author": "Alice",
+    "content": "Ticket CHRONO-201: 'Configure VPC Peering between AWS and GCP' | Status: Done | Assignee: Dave",
+    "source_id": "rec_033",
+    "timestamp": "2023-02-21T17:45:23+00:00"
+  },
+  {
+    "source_type": "jira",
+    "author": "Bob",
+    "content": "Ticket CHRONO-206: 'Document PG version compatibility between RDS and GCP' | Status: Done | Assignee: Eve",
+    "source_id": "rec_034",
+    "timestamp": "2023-02-23T18:43:46+00:00"
+  },
+  {
+    "source_type": "slack",
+    "author": "Bob",
+    "content": "I ran some latency tests on the GCP-AWS VPN. It's around 12ms. For DB replication, that's acceptable, but we should make sure we do it during low-traffic windows.",
+    "source_id": "rec_035",
+    "timestamp": "2023-02-24T07:58:27+00:00"
+  },
+  {
+    "source_type": "jira",
+    "author": "Bob",
+    "content": "Ticket CHRONO-203: 'Test logical replication between RDS Postgres and Cloud SQL' | Status: In Progress | Assignee: Bob",
+    "source_id": "rec_036",
+    "timestamp": "2023-02-24T09:27:45+00:00"
+  },
+  {
+    "source_type": "git",
+    "author": "Bob",
+    "content": "feat: add schema sync script to map RDS schema to Cloud SQL",
+    "source_id": "rec_037",
+    "timestamp": "2023-02-26T13:38:44+00:00"
+  },
+  {
+    "source_type": "slack",
+    "author": "Dave",
+    "content": "Cleanliness is subjective. CloudFormation has never failed us in production, Charlie. Don't break what's not broken.",
+    "source_id": "rec_038",
+    "timestamp": "2023-02-27T07:18:35+00:00"
+  },
+  {
+    "source_type": "slack",
+    "author": "Alice",
+    "content": "Dave, Terraform is our standard for new modules anyway. Let's cooperate on design reviews. Eve, how is the IAM mapping doc going?",
+    "source_id": "rec_039",
+    "timestamp": "2023-03-07T17:38:39+00:00"
+  },
+  {
+    "source_type": "slack",
+    "author": "Dave",
+    "content": "Yeah, GCP uses workload identity federation. It's actually decent, though configuring it was annoying. I worked with Eve on the policy mappings.",
+    "source_id": "rec_040",
+    "timestamp": "2023-03-08T10:40:56+00:00"
+  },
+  {
+    "source_type": "jira",
+    "author": "Alice",
+    "content": "Ticket CHRONO-207: 'Validate workload identity credential rotation' | Status: Done | Assignee: Dave",
+    "source_id": "rec_041",
+    "timestamp": "2023-03-09T03:56:59+00:00"
+  },
+  {
+    "source_type": "git",
+    "author": "Dave",
+    "content": "feat: implement VPC Peering Terraform script between AWS & GCP",
+    "source_id": "rec_042",
+    "timestamp": "2023-03-12T01:57:54+00:00"
+  },
+  {
+    "source_type": "jira",
+    "author": "Charlie",
+    "content": "Ticket CHRONO-205: 'Build GKE CI/CD templates in GitHub Actions' | Status: Done | Assignee: Charlie",
+    "source_id": "rec_043",
+    "timestamp": "2023-03-12T14:20:28+00:00"
+  },
+  {
+    "source_type": "slack",
+    "author": "Alice",
+    "content": "Excellent. We decided to target mid-May for the dry run databases sync. Eve will assist Bob on database mapping tasks.",
+    "source_id": "rec_044",
+    "timestamp": "2023-03-15T21:05:53+00:00"
+  },
+  {
+    "source_type": "slack",
+    "author": "Bob",
+    "content": "I'll create the database migration runbook doc today. Charlie, let's verify Cloud SQL performance benchmarks first.",
+    "source_id": "rec_045",
+    "timestamp": "2023-03-16T03:35:22+00:00"
+  },
+  {
+    "source_type": "jira",
+    "author": "Alice",
+    "content": "Ticket CHRONO-208: 'Setup GCP Cloud NAT rules for GKE private nodes' | Status: Done | Assignee: Charlie",
+    "source_id": "rec_046",
+    "timestamp": "2023-03-23T20:06:14+00:00"
+  },
+  {
+    "source_type": "slack",
+    "author": "Charlie",
+    "content": "Let's schedule that AWS RDS parameter group reboot for Sunday at 3 AM. Dave, do you mind if I assign the ticket for Terraform VPC peering to you?",
+    "source_id": "rec_047",
+    "timestamp": "2023-03-24T07:17:53+00:00"
+  },
+  {
+    "source_type": "git",
+    "author": "Dave",
+    "content": "security: apply IAM permission boundaries to GCP transition roles",
+    "source_id": "rec_048",
+    "timestamp": "2023-03-24T10:31:33+00:00"
+  },
+  {
+    "source_type": "slack",
+    "author": "Dave",
+    "content": "Sure, assign it to me. But I'm going to make sure the routing tables on our AWS transit gateway are locked down. Security first.",
+    "source_id": "rec_049",
+    "timestamp": "2023-03-29T14:27:57+00:00"
+  },
+  {
+    "source_type": "slack",
+    "author": "Eve",
+    "content": "It\u2019s going well! I mapped AWS Roles to GCP Service Accounts. Dave pointed out some edge cases with S3 access from GCP services, but we figured it out.",
+    "source_id": "rec_050",
+    "timestamp": "2023-03-31T14:04:30+00:00"
+  },
+  {
+    "source_type": "git",
+    "author": "Charlie",
+    "content": "refactor: simplify Terraform service accounts configuration in GCP",
+    "source_id": "rec_051",
+    "timestamp": "2023-04-09T12:07:34+00:00"
+  },
+  {
+    "source_type": "jira",
+    "author": "Alice",
+    "content": "Ticket CHRONO-204: 'Set up GKE Cluster configuration with Terraform' | Status: Done | Assignee: Charlie",
+    "source_id": "rec_052",
+    "timestamp": "2023-04-15T12:00:14+00:00"
+  },
+  {
+    "source_type": "git",
+    "author": "Charlie",
+    "content": "feat: configure GCP VPC and Cloud NAT with Terraform",
+    "source_id": "rec_053",
+    "timestamp": "2023-04-17T04:36:40+00:00"
+  },
+  {
+    "source_type": "git",
+    "author": "Bob",
+    "content": "feat: create migration utility script for database schema verification",
+    "source_id": "rec_054",
+    "timestamp": "2023-04-17T06:35:32+00:00"
+  },
+  {
+    "source_type": "git",
+    "author": "Bob",
+    "content": "feat: create Postgres config checker for replication settings",
+    "source_id": "rec_055",
+    "timestamp": "2023-04-18T13:41:44+00:00"
+  },
+  {
+    "source_type": "jira",
+    "author": "Alice",
+    "content": "Ticket CHRONO-209: 'Perform benchmark for GCP Memorystore Redis tier' | Status: Done | Assignee: Bob",
+    "source_id": "rec_056",
+    "timestamp": "2023-04-20T08:35:29+00:00"
+  },
+  {
+    "source_type": "slack",
+    "author": "Eve",
+    "content": "Awesome, excited to learn PG logical replication!",
+    "source_id": "rec_057",
+    "timestamp": "2023-04-23T11:39:21+00:00"
+  },
+  {
+    "source_type": "jira",
+    "author": "Alice",
+    "content": "Ticket CHRONO-202: 'Map AWS IAM Policies to GCP IAM Service Accounts' | Status: Done | Assignee: Eve",
+    "source_id": "rec_058",
+    "timestamp": "2023-04-25T19:10:37+00:00"
+  },
+  {
+    "source_type": "git",
+    "author": "Charlie",
+    "content": "feat: build Docker container for staging deployment on GKE",
+    "source_id": "rec_059",
+    "timestamp": "2023-04-26T00:53:40+00:00"
+  },
+  {
+    "source_type": "slack",
+    "author": "Bob",
+    "content": "Nice collab. I'm looking at our PostgreSQL config. To replicate RDS Postgres to Cloud SQL, we need logical replication enabled. That requires a reboot on AWS side.",
+    "source_id": "rec_060",
+    "timestamp": "2023-04-28T06:36:38+00:00"
+  },
+  {
+    "source_type": "slack",
+    "author": "Bob",
+    "content": "Database cutover complete. Cloud SQL PostgreSQL instance promoted to primary. I see zero errors in the web logs.",
+    "source_id": "rec_061",
+    "timestamp": "2023-04-28T14:34:02+00:00"
+  },
+  {
+    "source_type": "slack",
+    "author": "Alice",
+    "content": "Congratulations team! We are officially 100% on GCP now. AWS migration is fully resolved! GCP rocks. Code base cleanup next.",
+    "source_id": "rec_062",
+    "timestamp": "2023-05-01T11:30:39+00:00"
+  },
+  {
+    "source_type": "jira",
+    "author": "Charlie",
+    "content": "Ticket CHRONO-303: 'Deploy Core API service to GCP staging GKE' | Status: Done | Assignee: Charlie",
+    "source_id": "rec_063",
+    "timestamp": "2023-05-03T10:40:25+00:00"
+  },
+  {
+    "source_type": "git",
+    "author": "Eve",
+    "content": "test: add connection pool validation tests to GCP staging",
+    "source_id": "rec_064",
+    "timestamp": "2023-05-05T12:56:41+00:00"
+  },
+  {
+    "source_type": "slack",
+    "author": "Charlie",
+    "content": "DNS records updated. Traffic is routing to GCP GKE now! Latencies look incredible.",
+    "source_id": "rec_065",
+    "timestamp": "2023-05-07T13:40:51+00:00"
+  },
+  {
+    "source_type": "jira",
+    "author": "Alice",
+    "content": "Ticket CHRONO-307: 'Establish GCP alert manager dashboard and slack hooks' | Status: Done | Assignee: Eve",
+    "source_id": "rec_066",
+    "timestamp": "2023-05-09T18:42:37+00:00"
+  },
+  {
+    "source_type": "git",
+    "author": "Charlie",
+    "content": "ci: update deployment pipelines to target GCP GKE clusters",
+    "source_id": "rec_067",
+    "timestamp": "2023-05-12T18:38:53+00:00"
+  },
+  {
+    "source_type": "slack",
+    "author": "Dave",
+    "content": "We finalized deleting the AWS resources today. Clean slate!",
+    "source_id": "rec_068",
+    "timestamp": "2023-05-16T22:33:55+00:00"
+  },
+  {
+    "source_type": "slack",
+    "author": "Charlie",
+    "content": "VPC peering is stable. GCP GKE clusters are up. Terraform code is locked. All systems go!",
+    "source_id": "rec_069",
+    "timestamp": "2023-05-17T13:24:40+00:00"
+  },
+  {
+    "source_type": "jira",
+    "author": "Alice",
+    "content": "Ticket CHRONO-308: 'Verify GCP BigQuery raw data loads from old S3 logs' | Status: Done | Assignee: Charlie",
+    "source_id": "rec_070",
+    "timestamp": "2023-05-18T04:32:33+00:00"
+  },
+  {
+    "source_type": "jira",
+    "author": "Alice",
+    "content": "Ticket CHRONO-309: 'Write AWS RDS instance deletion runbook' | Status: Done | Assignee: Dave",
+    "source_id": "rec_071",
+    "timestamp": "2023-05-20T09:53:35+00:00"
+  },
+  {
+    "source_type": "slack",
+    "author": "Eve",
+    "content": "All integration tests passed on the staging GKE cluster! Connection pools are looking solid.",
+    "source_id": "rec_072",
+    "timestamp": "2023-05-23T01:47:47+00:00"
+  },
+  {
+    "source_type": "jira",
+    "author": "Alice",
+    "content": "Ticket CHRONO-306: 'Decommission AWS resources (EC2, RDS, VPC)' | Status: Done | Assignee: Dave",
+    "source_id": "rec_073",
+    "timestamp": "2023-05-24T09:12:16+00:00"
+  },
+  {
+    "source_type": "git",
+    "author": "Charlie",
+    "content": "fix: adjust GKE ingress resource limits and SSL certificates config",
+    "source_id": "rec_074",
+    "timestamp": "2023-05-25T04:45:42+00:00"
+  },
+  {
+    "source_type": "slack",
+    "author": "Eve",
+    "content": "Yay! Thanks everyone for teaching me so much about GCP and PG replication!",
+    "source_id": "rec_075",
+    "timestamp": "2023-05-25T08:52:32+00:00"
+  },
+  {
+    "source_type": "slack",
+    "author": "Bob",
+    "content": "Dry run database sync completed successfully. Zero replication lag after 4 hours. Database sync is fully operational.",
+    "source_id": "rec_076",
+    "timestamp": "2023-05-28T17:17:55+00:00"
+  },
+  {
+    "source_type": "slack",
+    "author": "Alice",
+    "content": "Reminder: Code freeze is tonight. We are executing the migration dry-run this Saturday. Everyone ready?",
+    "source_id": "rec_077",
+    "timestamp": "2023-05-29T15:08:25+00:00"
+  },
+  {
+    "source_type": "slack",
+    "author": "Dave",
+    "content": "I verified AWS resources are inactive. Starting teardown of the old RDS instance. I have to admit, Cloud SQL's promotion was pretty seamless.",
+    "source_id": "rec_078",
+    "timestamp": "2023-05-31T11:45:34+00:00"
+  },
+  {
+    "source_type": "git",
+    "author": "Bob",
+    "content": "script: finalize PostgreSQL promotion and switchover sequence script",
+    "source_id": "rec_079",
+    "timestamp": "2023-06-06T20:23:23+00:00"
+  },
+  {
+    "source_type": "git",
+    "author": "Bob",
+    "content": "feat: add replication lag monitoring script for Cloud SQL target",
+    "source_id": "rec_080",
+    "timestamp": "2023-06-07T02:29:25+00:00"
+  },
+  {
+    "source_type": "jira",
+    "author": "Alice",
+    "content": "Ticket CHRONO-304: 'Execute DB dry-run replication and verify lag' | Status: Done | Assignee: Bob",
+    "source_id": "rec_081",
+    "timestamp": "2023-06-07T13:13:09+00:00"
+  },
+  {
+    "source_type": "jira",
+    "author": "Alice",
+    "content": "Ticket CHRONO-302: 'Verify connection pooling and performance on Cloud SQL' | Status: Done | Assignee: Bob",
+    "source_id": "rec_082",
+    "timestamp": "2023-06-11T10:18:21+00:00"
+  },
+  {
+    "source_type": "git",
+    "author": "Charlie",
+    "content": "feat: add Kubernetes deployment manifests for core services on GKE",
+    "source_id": "rec_083",
+    "timestamp": "2023-06-14T22:36:36+00:00"
+  },
+  {
+    "source_type": "slack",
+    "author": "Dave",
+    "content": "I completed the AWS IAM teardown scripts. They are staged in the git repo. I'll run them only after Bob gives final signoff on GCP database sync.",
+    "source_id": "rec_084",
+    "timestamp": "2023-06-16T11:04:10+00:00"
+  },
+  {
+    "source_type": "git",
+    "author": "Dave",
+    "content": "script: implement AWS teardown utility for EC2, RDS, and VPC cleanup",
+    "source_id": "rec_085",
+    "timestamp": "2023-06-17T16:50:42+00:00"
+  },
+  {
+    "source_type": "git",
+    "author": "Eve",
+    "content": "test: add system integration tests for GCP staging services",
+    "source_id": "rec_086",
+    "timestamp": "2023-06-18T15:06:23+00:00"
+  },
+  {
+    "source_type": "jira",
+    "author": "Alice",
+    "content": "Ticket CHRONO-301: 'Implement DB switchover automation scripts' | Status: Done | Assignee: Bob",
+    "source_id": "rec_087",
+    "timestamp": "2023-06-19T04:13:59+00:00"
+  },
+  {
+    "source_type": "jira",
+    "author": "Alice",
+    "content": "Ticket CHRONO-305: 'Update DNS and cutover traffic to GCP GKE Ingress' | Status: Done | Assignee: Charlie",
+    "source_id": "rec_088",
+    "timestamp": "2023-06-22T07:30:15+00:00"
+  },
+  {
+    "source_type": "slack",
+    "author": "Alice",
+    "content": "Amazing work! Let's schedule the final DNS cutover for Friday night. Bob and Charlie will handle switchover. Dave will monitor AWS side.",
+    "source_id": "rec_089",
+    "timestamp": "2023-06-23T14:51:29+00:00"
+  },
+  {
+    "source_type": "git",
+    "author": "Dave",
+    "content": "script: run AWS resources cleanup and archive old S3 buckets",
+    "source_id": "rec_090",
+    "timestamp": "2023-06-29T11:12:28+00:00"
+  }
+]

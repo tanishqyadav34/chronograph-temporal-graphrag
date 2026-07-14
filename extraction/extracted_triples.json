@@ -1,0 +1,1829 @@
+[
+  {
+    "subject": "Eve",
+    "relation": "ASSIGNED_TO",
+    "object": "Ticket CHRONO-109",
+    "timestamp": "2023-01-02T15:17:11+00:00",
+    "source_id": "rec_001"
+  },
+  {
+    "subject": "Alice",
+    "relation": "RESOLVED",
+    "object": "Ticket CHRONO-109",
+    "timestamp": "2023-01-02T15:17:11+00:00",
+    "source_id": "rec_001"
+  },
+  {
+    "subject": "Bob",
+    "relation": "ASSIGNED_TO",
+    "object": "Ticket CHRONO-102",
+    "timestamp": "2023-01-06T05:33:30+00:00",
+    "source_id": "rec_002"
+  },
+  {
+    "subject": "Charlie",
+    "relation": "COMMITTED_CODE",
+    "object": "GCP project setup scripts",
+    "timestamp": "2023-01-06T12:39:59+00:00",
+    "source_id": "rec_003"
+  },
+  {
+    "subject": "Dave",
+    "relation": "MENTIONED",
+    "object": "Bob",
+    "timestamp": "2023-01-07T03:51:54+00:00",
+    "source_id": "rec_004"
+  },
+  {
+    "subject": "Dave",
+    "relation": "MENTIONED",
+    "object": "team",
+    "timestamp": "2023-01-07T03:51:54+00:00",
+    "source_id": "rec_004"
+  },
+  {
+    "subject": "Dave",
+    "relation": "MENTIONED",
+    "object": "POC",
+    "timestamp": "2023-01-07T03:51:54+00:00",
+    "source_id": "rec_004"
+  },
+  {
+    "subject": "Dave",
+    "relation": "MENTIONED",
+    "object": "core databases",
+    "timestamp": "2023-01-07T03:51:54+00:00",
+    "source_id": "rec_004"
+  },
+  {
+    "subject": "Dave",
+    "relation": "ARGUED_AGAINST",
+    "object": "moving the core databases",
+    "timestamp": "2023-01-07T03:51:54+00:00",
+    "source_id": "rec_004"
+  },
+  {
+    "subject": "Dave",
+    "relation": "ADVOCATED_FOR",
+    "object": "POC",
+    "timestamp": "2023-01-07T03:51:54+00:00",
+    "source_id": "rec_004"
+  },
+  {
+    "subject": "Dave",
+    "relation": "COMMITTED_CODE",
+    "object": "mock workload scripts",
+    "timestamp": "2023-01-07T13:07:04+00:00",
+    "source_id": "rec_005"
+  },
+  {
+    "subject": "Dave",
+    "relation": "COMMITTED_CODE",
+    "object": "AWS RDS benchmarks",
+    "timestamp": "2023-01-07T13:07:04+00:00",
+    "source_id": "rec_005"
+  },
+  {
+    "subject": "Eve",
+    "relation": "ASSIGNED_TO",
+    "object": "Ticket CHRONO-107",
+    "timestamp": "2023-01-09T19:29:37+00:00",
+    "source_id": "rec_006"
+  },
+  {
+    "subject": "Alice",
+    "relation": "RESOLVED",
+    "object": "Ticket CHRONO-107",
+    "timestamp": "2023-01-09T19:29:37+00:00",
+    "source_id": "rec_006"
+  },
+  {
+    "subject": "Dave",
+    "relation": "ADVOCATED_FOR",
+    "object": "AWS",
+    "timestamp": "2023-01-10T06:33:25+00:00",
+    "source_id": "rec_007"
+  },
+  {
+    "subject": "Dave",
+    "relation": "ARGUED_AGAINST",
+    "object": "GCP",
+    "timestamp": "2023-01-10T06:33:25+00:00",
+    "source_id": "rec_007"
+  },
+  {
+    "subject": "Charlie",
+    "relation": "ADVOCATED_FOR",
+    "object": "GCP BigQuery",
+    "timestamp": "2023-01-14T21:09:01+00:00",
+    "source_id": "rec_008"
+  },
+  {
+    "subject": "Charlie",
+    "relation": "ARGUED_AGAINST",
+    "object": "Amazon Redshift",
+    "timestamp": "2023-01-14T21:09:01+00:00",
+    "source_id": "rec_008"
+  },
+  {
+    "subject": "Charlie",
+    "relation": "MENTIONED",
+    "object": "GCP's GKE options",
+    "timestamp": "2023-01-14T21:09:01+00:00",
+    "source_id": "rec_008"
+  },
+  {
+    "subject": "Dave",
+    "relation": "COMMITTED_CODE",
+    "object": "github actions",
+    "timestamp": "2023-01-16T16:14:07+00:00",
+    "source_id": "rec_009"
+  },
+  {
+    "subject": "Dave",
+    "relation": "COMMITTED_CODE",
+    "object": "aws-cli dependencies",
+    "timestamp": "2023-01-16T16:14:07+00:00",
+    "source_id": "rec_009"
+  },
+  {
+    "subject": "Bob",
+    "relation": "ARGUED_AGAINST",
+    "object": "database migration",
+    "timestamp": "2023-01-16T20:51:27+00:00",
+    "source_id": "rec_010"
+  },
+  {
+    "subject": "Bob",
+    "relation": "ARGUED_AGAINST",
+    "object": "moving Postgres database from AWS RDS to GCP Cloud SQL",
+    "timestamp": "2023-01-16T20:51:27+00:00",
+    "source_id": "rec_010"
+  },
+  {
+    "subject": "Bob",
+    "relation": "ARGUED_AGAINST",
+    "object": "high-risk database migration",
+    "timestamp": "2023-01-16T20:51:27+00:00",
+    "source_id": "rec_010"
+  },
+  {
+    "subject": "Dave",
+    "relation": "ASSIGNED_TO",
+    "object": "Ticket CHRONO-106",
+    "timestamp": "2023-01-18T06:09:51+00:00",
+    "source_id": "rec_011"
+  },
+  {
+    "subject": "Alice",
+    "relation": "MENTIONED",
+    "object": "Jira tickets",
+    "timestamp": "2023-01-19T09:13:37+00:00",
+    "source_id": "rec_012"
+  },
+  {
+    "subject": "Alice",
+    "relation": "MENTIONED",
+    "object": "AWS/GCP analysis",
+    "timestamp": "2023-01-19T09:13:37+00:00",
+    "source_id": "rec_012"
+  },
+  {
+    "subject": "Alice",
+    "relation": "MENTIONED",
+    "object": "POC planning",
+    "timestamp": "2023-01-19T09:13:37+00:00",
+    "source_id": "rec_012"
+  },
+  {
+    "subject": "Alice",
+    "relation": "MENTIONED",
+    "object": "Bob",
+    "timestamp": "2023-01-19T09:13:37+00:00",
+    "source_id": "rec_012"
+  },
+  {
+    "subject": "Alice",
+    "relation": "MENTIONED",
+    "object": "database risk analysis",
+    "timestamp": "2023-01-19T09:13:37+00:00",
+    "source_id": "rec_012"
+  },
+  {
+    "subject": "Bob",
+    "relation": "ASSIGNED_TO",
+    "object": "database risk analysis",
+    "timestamp": "2023-01-19T09:13:37+00:00",
+    "source_id": "rec_012"
+  },
+  {
+    "subject": "Charlie",
+    "relation": "MENTIONED",
+    "object": "Alice",
+    "timestamp": "2023-01-19T13:39:05+00:00",
+    "source_id": "rec_013"
+  },
+  {
+    "subject": "Charlie",
+    "relation": "MENTIONED",
+    "object": "Bob",
+    "timestamp": "2023-01-19T13:39:05+00:00",
+    "source_id": "rec_013"
+  },
+  {
+    "subject": "Charlie",
+    "relation": "MENTIONED",
+    "object": "Cloud SQL",
+    "timestamp": "2023-01-19T13:39:05+00:00",
+    "source_id": "rec_013"
+  },
+  {
+    "subject": "Charlie",
+    "relation": "MENTIONED",
+    "object": "PostgreSQL",
+    "timestamp": "2023-01-19T13:39:05+00:00",
+    "source_id": "rec_013"
+  },
+  {
+    "subject": "Charlie",
+    "relation": "MENTIONED",
+    "object": "replication tools",
+    "timestamp": "2023-01-19T13:39:05+00:00",
+    "source_id": "rec_013"
+  },
+  {
+    "subject": "Charlie",
+    "relation": "MENTIONED",
+    "object": "migrating",
+    "timestamp": "2023-01-19T13:39:05+00:00",
+    "source_id": "rec_013"
+  },
+  {
+    "subject": "Charlie",
+    "relation": "ASSIGNED_TO",
+    "object": "Ticket CHRONO-101",
+    "timestamp": "2023-01-20T03:43:51+00:00",
+    "source_id": "rec_014"
+  },
+  {
+    "subject": "Bob",
+    "relation": "COMMITTED_CODE",
+    "object": "docs",
+    "timestamp": "2023-01-20T23:42:02+00:00",
+    "source_id": "rec_015"
+  },
+  {
+    "subject": "Charlie",
+    "relation": "COMMITTED_CODE",
+    "object": "setup terraform remote state bucket in GCS",
+    "timestamp": "2023-01-21T05:20:03+00:00",
+    "source_id": "rec_016"
+  },
+  {
+    "subject": "Charlie",
+    "relation": "ADVOCATED_FOR",
+    "object": "migrating containerized apps first",
+    "timestamp": "2023-01-21T06:39:43+00:00",
+    "source_id": "rec_017"
+  },
+  {
+    "subject": "Charlie",
+    "relation": "ADVOCATED_FOR",
+    "object": "migrating to GCP",
+    "timestamp": "2023-01-21T06:39:43+00:00",
+    "source_id": "rec_017"
+  },
+  {
+    "subject": "Charlie",
+    "relation": "MENTIONED",
+    "object": "GCP IAM",
+    "timestamp": "2023-01-21T06:39:43+00:00",
+    "source_id": "rec_017"
+  },
+  {
+    "subject": "Charlie",
+    "relation": "MENTIONED",
+    "object": "AWS account hierarchies",
+    "timestamp": "2023-01-21T06:39:43+00:00",
+    "source_id": "rec_017"
+  },
+  {
+    "subject": "Eve",
+    "relation": "COMMITTED_CODE",
+    "object": "docs",
+    "timestamp": "2023-01-22T23:50:25+00:00",
+    "source_id": "rec_018"
+  },
+  {
+    "subject": "Bob",
+    "relation": "ASSIGNED_TO",
+    "object": "Ticket CHRONO-104",
+    "timestamp": "2023-01-25T14:43:55+00:00",
+    "source_id": "rec_019"
+  },
+  {
+    "subject": "Bob",
+    "relation": "RESOLVED",
+    "object": "Ticket CHRONO-104",
+    "timestamp": "2023-01-25T14:43:55+00:00",
+    "source_id": "rec_019"
+  },
+  {
+    "subject": "Charlie",
+    "relation": "ASSIGNED_TO",
+    "object": "Ticket CHRONO-108",
+    "timestamp": "2023-01-31T13:35:13+00:00",
+    "source_id": "rec_021"
+  },
+  {
+    "subject": "Dave",
+    "relation": "ARGUED_AGAINST",
+    "object": "GCP's IAM",
+    "timestamp": "2023-02-01T09:03:58+00:00",
+    "source_id": "rec_022"
+  },
+  {
+    "subject": "Dave",
+    "relation": "ARGUED_AGAINST",
+    "object": "security migration effort",
+    "timestamp": "2023-02-01T09:03:58+00:00",
+    "source_id": "rec_022"
+  },
+  {
+    "subject": "Dave",
+    "relation": "MENTIONED",
+    "object": "AWS",
+    "timestamp": "2023-02-01T09:03:58+00:00",
+    "source_id": "rec_022"
+  },
+  {
+    "subject": "Dave",
+    "relation": "MENTIONED",
+    "object": "IAM policies",
+    "timestamp": "2023-02-01T09:03:58+00:00",
+    "source_id": "rec_022"
+  },
+  {
+    "subject": "Charlie",
+    "relation": "ASSIGNED_TO",
+    "object": "CHRONO-103",
+    "timestamp": "2023-02-07T17:07:47+00:00",
+    "source_id": "rec_023"
+  },
+  {
+    "subject": "Charlie",
+    "relation": "RESOLVED",
+    "object": "CHRONO-103",
+    "timestamp": "2023-02-07T17:07:47+00:00",
+    "source_id": "rec_023"
+  },
+  {
+    "subject": "Alice",
+    "relation": "RESOLVED",
+    "object": "Ticket CHRONO-105",
+    "timestamp": "2023-02-08T23:39:02+00:00",
+    "source_id": "rec_024"
+  },
+  {
+    "subject": "Bob",
+    "relation": "ASSIGNED_TO",
+    "object": "Ticket CHRONO-105",
+    "timestamp": "2023-02-08T23:39:02+00:00",
+    "source_id": "rec_024"
+  },
+  {
+    "subject": "Eve",
+    "relation": "MENTIONED",
+    "object": "AWS",
+    "timestamp": "2023-02-12T04:26:05+00:00",
+    "source_id": "rec_025"
+  },
+  {
+    "subject": "Eve",
+    "relation": "MENTIONED",
+    "object": "GCP",
+    "timestamp": "2023-02-12T04:26:05+00:00",
+    "source_id": "rec_025"
+  },
+  {
+    "subject": "Eve",
+    "relation": "MENTIONED",
+    "object": "security/IAM mappings",
+    "timestamp": "2023-02-12T04:26:05+00:00",
+    "source_id": "rec_025"
+  },
+  {
+    "subject": "Eve",
+    "relation": "MENTIONED",
+    "object": "AWS",
+    "timestamp": "2023-02-12T04:26:05+00:00",
+    "source_id": "rec_025"
+  },
+  {
+    "subject": "Eve",
+    "relation": "MENTIONED",
+    "object": "GCP",
+    "timestamp": "2023-02-12T04:26:05+00:00",
+    "source_id": "rec_025"
+  },
+  {
+    "subject": "Eve",
+    "relation": "MENTIONED",
+    "object": "AWS",
+    "timestamp": "2023-02-12T04:26:05+00:00",
+    "source_id": "rec_025"
+  },
+  {
+    "subject": "Eve",
+    "relation": "MENTIONED",
+    "object": "AWS",
+    "timestamp": "2023-02-12T04:26:05+00:00",
+    "source_id": "rec_025"
+  },
+  {
+    "subject": "Eve",
+    "relation": "MENTIONED",
+    "object": "AWS",
+    "timestamp": "2023-02-12T04:26:05+00:00",
+    "source_id": "rec_025"
+  },
+  {
+    "subject": "Eve",
+    "relation": "MENTIONED",
+    "object": "AWS",
+    "timestamp": "2023-02-12T04:26:05+00:00",
+    "source_id": "rec_025"
+  },
+  {
+    "subject": "Eve",
+    "relation": "MENTIONED",
+    "object": "AWS",
+    "timestamp": "2023-02-12T04:26:05+00:00",
+    "source_id": "rec_025"
+  },
+  {
+    "subject": "Eve",
+    "relation": "MENTIONED",
+    "object": "AWS",
+    "timestamp": "2023-02-12T04:26:05+00:00",
+    "source_id": "rec_025"
+  },
+  {
+    "subject": "Eve",
+    "relation": "MENTIONED",
+    "object": "AWS",
+    "timestamp": "2023-02-12T04:26:05+00:00",
+    "source_id": "rec_025"
+  },
+  {
+    "subject": "Eve",
+    "relation": "MENTIONED",
+    "object": "AWS",
+    "timestamp": "2023-02-12T04:26:05+00:00",
+    "source_id": "rec_025"
+  },
+  {
+    "subject": "Eve",
+    "relation": "MENTIONED",
+    "object": "AWS",
+    "timestamp": "2023-02-12T04:26:05+00:00",
+    "source_id": "rec_025"
+  },
+  {
+    "subject": "Eve",
+    "relation": "MENTIONED",
+    "object": "AWS",
+    "timestamp": "2023-02-12T04:26:05+00:00",
+    "source_id": "rec_025"
+  },
+  {
+    "subject": "Eve",
+    "relation": "MENTIONED",
+    "object": "AWS",
+    "timestamp": "2023-02-12T04:26:05+00:00",
+    "source_id": "rec_025"
+  },
+  {
+    "subject": "Eve",
+    "relation": "MENTIONED",
+    "object": "AWS",
+    "timestamp": "2023-02-12T04:26:05+00:00",
+    "source_id": "rec_025"
+  },
+  {
+    "subject": "Eve",
+    "relation": "MENTIONED",
+    "object": "AWS",
+    "timestamp": "2023-02-12T04:26:05+00:00",
+    "source_id": "rec_025"
+  },
+  {
+    "subject": "Eve",
+    "relation": "MENTIONED",
+    "object": "AWS",
+    "timestamp": "2023-02-12T04:26:05+00:00",
+    "source_id": "rec_025"
+  },
+  {
+    "subject": "Eve",
+    "relation": "MENTIONED",
+    "object": "AWS",
+    "timestamp": "2023-02-12T04:26:05+00:00",
+    "source_id": "rec_025"
+  },
+  {
+    "subject": "Eve",
+    "relation": "MENTIONED",
+    "object": "AWS",
+    "timestamp": "2023-02-12T04:26:05+00:00",
+    "source_id": "rec_025"
+  },
+  {
+    "subject": "Eve",
+    "relation": "MENTIONED",
+    "object": "AWS",
+    "timestamp": "2023-02-12T04:26:05+00:00",
+    "source_id": "rec_025"
+  },
+  {
+    "subject": "Eve",
+    "relation": "MENTIONED",
+    "object": "AWS",
+    "timestamp": "2023-02-12T04:26:05+00:00",
+    "source_id": "rec_025"
+  },
+  {
+    "subject": "Eve",
+    "relation": "MENTIONED",
+    "object": "AWS",
+    "timestamp": "2023-02-12T04:26:05+00:00",
+    "source_id": "rec_025"
+  },
+  {
+    "subject": "Eve",
+    "relation": "MENTIONED",
+    "object": "AWS",
+    "timestamp": "2023-02-12T04:26:05+00:00",
+    "source_id": "rec_025"
+  },
+  {
+    "subject": "Eve",
+    "relation": "MENTIONED",
+    "object": "AWS",
+    "timestamp": "2023-02-12T04:26:05+00:00",
+    "source_id": "rec_025"
+  },
+  {
+    "subject": "Eve",
+    "relation": "MENTIONED",
+    "object": "AWS",
+    "timestamp": "2023-02-12T04:26:05+00:00",
+    "source_id": "rec_025"
+  },
+  {
+    "subject": "Eve",
+    "relation": "MENTIONED",
+    "object": "AWS",
+    "timestamp": "2023-02-12T04:26:05+00:00",
+    "source_id": "rec_025"
+  },
+  {
+    "subject": "Eve",
+    "relation": "MENTIONED",
+    "object": "AWS",
+    "timestamp": "2023-02-12T04:26:05+00:00",
+    "source_id": "rec_025"
+  },
+  {
+    "subject": "Eve",
+    "relation": "MENTIONED",
+    "object": "AWS",
+    "timestamp": "2023-02-12T04:26:05+00:00",
+    "source_id": "rec_025"
+  },
+  {
+    "subject": "Eve",
+    "relation": "MENTIONED",
+    "object": "AWS",
+    "timestamp": "2023-02-12T04:26:05+00:00",
+    "source_id": "rec_025"
+  },
+  {
+    "subject": "Eve",
+    "relation": "MENTIONED",
+    "object": "AWS",
+    "timestamp": "2023-02-12T04:26:05+00:00",
+    "source_id": "rec_025"
+  },
+  {
+    "subject": "Bob",
+    "relation": "MENTIONED",
+    "object": "PG replication limitations",
+    "timestamp": "2023-02-12T19:55:36+00:00",
+    "source_id": "rec_026"
+  },
+  {
+    "subject": "Bob",
+    "relation": "MENTIONED",
+    "object": "Eve",
+    "timestamp": "2023-02-12T19:55:36+00:00",
+    "source_id": "rec_026"
+  },
+  {
+    "subject": "Bob",
+    "relation": "MENTIONED",
+    "object": "network latency",
+    "timestamp": "2023-02-12T19:55:36+00:00",
+    "source_id": "rec_026"
+  },
+  {
+    "subject": "Bob",
+    "relation": "MENTIONED",
+    "object": "AWS",
+    "timestamp": "2023-02-12T19:55:36+00:00",
+    "source_id": "rec_026"
+  },
+  {
+    "subject": "Bob",
+    "relation": "MENTIONED",
+    "object": "GCP",
+    "timestamp": "2023-02-12T19:55:36+00:00",
+    "source_id": "rec_026"
+  },
+  {
+    "subject": "Eve",
+    "relation": "MENTIONED",
+    "object": "document",
+    "timestamp": "2023-02-12T19:55:36+00:00",
+    "source_id": "rec_026"
+  },
+  {
+    "subject": "Bob",
+    "relation": "COMMITTED_CODE",
+    "object": "docs: analyze AWS IAM policy limitations on transit gateways",
+    "timestamp": "2023-02-13T04:19:39+00:00",
+    "source_id": "rec_027"
+  },
+  {
+    "subject": "Charlie",
+    "relation": "COMMITTED_CODE",
+    "object": "terraform layout for GCP landing zone tests",
+    "timestamp": "2023-02-15T13:16:42+00:00",
+    "source_id": "rec_030"
+  },
+  {
+    "subject": "Charlie",
+    "relation": "COMMITTED_CODE",
+    "object": "Terraform",
+    "timestamp": "2023-02-15T13:53:02+00:00",
+    "source_id": "rec_031"
+  },
+  {
+    "subject": "Charlie",
+    "relation": "MENTIONED",
+    "object": "GCP",
+    "timestamp": "2023-02-15T13:53:02+00:00",
+    "source_id": "rec_031"
+  },
+  {
+    "subject": "Charlie",
+    "relation": "MENTIONED",
+    "object": "CloudFormation",
+    "timestamp": "2023-02-15T13:53:02+00:00",
+    "source_id": "rec_031"
+  },
+  {
+    "subject": "Charlie",
+    "relation": "MENTIONED",
+    "object": "GCP foundation",
+    "timestamp": "2023-02-15T13:53:02+00:00",
+    "source_id": "rec_031"
+  },
+  {
+    "subject": "Eve",
+    "relation": "COMMITTED_CODE",
+    "object": "docs: add mapping outline of AWS IAM roles to GCP service accounts",
+    "timestamp": "2023-02-17T22:16:43+00:00",
+    "source_id": "rec_032"
+  },
+  {
+    "subject": "Alice",
+    "relation": "MENTIONED",
+    "object": "Ticket CHRONO-201",
+    "timestamp": "2023-02-21T17:45:23+00:00",
+    "source_id": "rec_033"
+  },
+  {
+    "subject": "Alice",
+    "relation": "MENTIONED",
+    "object": "Dave",
+    "timestamp": "2023-02-21T17:45:23+00:00",
+    "source_id": "rec_033"
+  },
+  {
+    "subject": "Alice",
+    "relation": "MENTIONED",
+    "object": "VPC Peering",
+    "timestamp": "2023-02-21T17:45:23+00:00",
+    "source_id": "rec_033"
+  },
+  {
+    "subject": "Alice",
+    "relation": "MENTIONED",
+    "object": "AWS",
+    "timestamp": "2023-02-21T17:45:23+00:00",
+    "source_id": "rec_033"
+  },
+  {
+    "subject": "Alice",
+    "relation": "MENTIONED",
+    "object": "GCP",
+    "timestamp": "2023-02-21T17:45:23+00:00",
+    "source_id": "rec_033"
+  },
+  {
+    "subject": "Dave",
+    "relation": "ASSIGNED_TO",
+    "object": "Ticket CHRONO-201",
+    "timestamp": "2023-02-21T17:45:23+00:00",
+    "source_id": "rec_033"
+  },
+  {
+    "subject": "Eve",
+    "relation": "ASSIGNED_TO",
+    "object": "Ticket CHRONO-206",
+    "timestamp": "2023-02-23T18:43:46+00:00",
+    "source_id": "rec_034"
+  },
+  {
+    "subject": "Bob",
+    "relation": "RESOLVED",
+    "object": "Ticket CHRONO-206",
+    "timestamp": "2023-02-23T18:43:46+00:00",
+    "source_id": "rec_034"
+  },
+  {
+    "subject": "Bob",
+    "relation": "MENTIONED",
+    "object": "GCP-AWS VPN",
+    "timestamp": "2023-02-24T07:58:27+00:00",
+    "source_id": "rec_035"
+  },
+  {
+    "subject": "Bob",
+    "relation": "MENTIONED",
+    "object": "DB replication",
+    "timestamp": "2023-02-24T07:58:27+00:00",
+    "source_id": "rec_035"
+  },
+  {
+    "subject": "Bob",
+    "relation": "ASSIGNED_TO",
+    "object": "Ticket CHRONO-203",
+    "timestamp": "2023-02-24T09:27:45+00:00",
+    "source_id": "rec_036"
+  },
+  {
+    "subject": "Bob",
+    "relation": "COMMITTED_CODE",
+    "object": "schema sync script",
+    "timestamp": "2023-02-26T13:38:44+00:00",
+    "source_id": "rec_037"
+  },
+  {
+    "subject": "Bob",
+    "relation": "COMMITTED_CODE",
+    "object": "RDS schema",
+    "timestamp": "2023-02-26T13:38:44+00:00",
+    "source_id": "rec_037"
+  },
+  {
+    "subject": "Bob",
+    "relation": "COMMITTED_CODE",
+    "object": "Cloud SQL",
+    "timestamp": "2023-02-26T13:38:44+00:00",
+    "source_id": "rec_037"
+  },
+  {
+    "subject": "Dave",
+    "relation": "MENTIONED",
+    "object": "Charlie",
+    "timestamp": "2023-02-27T07:18:35+00:00",
+    "source_id": "rec_038"
+  },
+  {
+    "subject": "Dave",
+    "relation": "MENTIONED",
+    "object": "CloudFormation",
+    "timestamp": "2023-02-27T07:18:35+00:00",
+    "source_id": "rec_038"
+  },
+  {
+    "subject": "Dave",
+    "relation": "MENTIONED",
+    "object": "Charlie",
+    "timestamp": "2023-02-27T07:18:35+00:00",
+    "source_id": "rec_038"
+  },
+  {
+    "subject": "Dave",
+    "relation": "MENTIONED",
+    "object": "CloudFormation",
+    "timestamp": "2023-02-27T07:18:35+00:00",
+    "source_id": "rec_038"
+  },
+  {
+    "subject": "Dave",
+    "relation": "MENTIONED",
+    "object": "what's not broken",
+    "timestamp": "2023-02-27T07:18:35+00:00",
+    "source_id": "rec_038"
+  },
+  {
+    "subject": "Dave",
+    "relation": "MENTIONED",
+    "object": "production",
+    "timestamp": "2023-02-27T07:18:35+00:00",
+    "source_id": "rec_038"
+  },
+  {
+    "subject": "Dave",
+    "relation": "MENTIONED",
+    "object": "CloudFormation",
+    "timestamp": "2023-02-27T07:18:35+00:00",
+    "source_id": "rec_038"
+  },
+  {
+    "subject": "Dave",
+    "relation": "MENTIONED",
+    "object": "Charlie",
+    "timestamp": "2023-02-27T07:18:35+00:00",
+    "source_id": "rec_038"
+  },
+  {
+    "subject": "Dave",
+    "relation": "MENTIONED",
+    "object": "CloudFormation",
+    "timestamp": "2023-02-27T07:18:35+00:00",
+    "source_id": "rec_038"
+  },
+  {
+    "subject": "Dave",
+    "relation": "MENTIONED",
+    "object": "production",
+    "timestamp": "2023-02-27T07:18:35+00:00",
+    "source_id": "rec_038"
+  },
+  {
+    "subject": "Dave",
+    "relation": "MENTIONED",
+    "object": "CloudFormation",
+    "timestamp": "2023-02-27T07:18:35+00:00",
+    "source_id": "rec_038"
+  },
+  {
+    "subject": "Dave",
+    "relation": "MENTIONED",
+    "object": "Charlie",
+    "timestamp": "2023-02-27T07:18:35+00:00",
+    "source_id": "rec_038"
+  },
+  {
+    "subject": "Dave",
+    "relation": "MENTIONED",
+    "object": "CloudFormation",
+    "timestamp": "2023-02-27T07:18:35+00:00",
+    "source_id": "rec_038"
+  },
+  {
+    "subject": "Dave",
+    "relation": "MENTIONED",
+    "object": "what's not broken",
+    "timestamp": "2023-02-27T07:18:35+00:00",
+    "source_id": "rec_038"
+  },
+  {
+    "subject": "Dave",
+    "relation": "MENTIONED",
+    "object": "production",
+    "timestamp": "2023-02-27T07:18:35+00:00",
+    "source_id": "rec_038"
+  },
+  {
+    "subject": "Dave",
+    "relation": "MENTIONED",
+    "object": "CloudFormation",
+    "timestamp": "2023-02-27T07:18:35+00:00",
+    "source_id": "rec_038"
+  },
+  {
+    "subject": "Dave",
+    "relation": "MENTIONED",
+    "object": "Charlie",
+    "timestamp": "2023-02-27T07:18:35+00:00",
+    "source_id": "rec_038"
+  },
+  {
+    "subject": "Dave",
+    "relation": "MENTIONED",
+    "object": "CloudFormation",
+    "timestamp": "2023-02-27T07:18:35+00:00",
+    "source_id": "rec_038"
+  },
+  {
+    "subject": "Dave",
+    "relation": "MENTIONED",
+    "object": "production",
+    "timestamp": "2023-02-27T07:18:35+00:00",
+    "source_id": "rec_038"
+  },
+  {
+    "subject": "Dave",
+    "relation": "MENTIONED",
+    "object": "CloudFormation",
+    "timestamp": "2023-02-27T07:18:35+00:00",
+    "source_id": "rec_038"
+  },
+  {
+    "subject": "Dave",
+    "relation": "MENTIONED",
+    "object": "Charlie",
+    "timestamp": "2023-02-27T07:18:35+00:00",
+    "source_id": "rec_038"
+  },
+  {
+    "subject": "Dave",
+    "relation": "MENTIONED",
+    "object": "CloudFormation",
+    "timestamp": "2023-02-27T07:18:35+00:00",
+    "source_id": "rec_038"
+  },
+  {
+    "subject": "Dave",
+    "relation": "MENTIONED",
+    "object": "what's not broken",
+    "timestamp": "2023-02-27T07:18:35+00:00",
+    "source_id": "rec_038"
+  },
+  {
+    "subject": "Dave",
+    "relation": "MENTIONED",
+    "object": "production",
+    "timestamp": "2023-02-27T07:18:35+00:00",
+    "source_id": "rec_038"
+  },
+  {
+    "subject": "Dave",
+    "relation": "MENTIONED",
+    "object": "CloudFormation",
+    "timestamp": "2023-02-27T07:18:35+00:00",
+    "source_id": "rec_038"
+  },
+  {
+    "subject": "Dave",
+    "relation": "MENTIONED",
+    "object": "Charlie",
+    "timestamp": "2023-02-27T07:18:35+00:00",
+    "source_id": "rec_038"
+  },
+  {
+    "subject": "Dave",
+    "relation": "MENTIONED",
+    "object": "CloudFormation",
+    "timestamp": "2023-02-27T07:18:35+00:00",
+    "source_id": "rec_038"
+  },
+  {
+    "subject": "Dave",
+    "relation": "MENTIONED",
+    "object": "production",
+    "timestamp": "2023-02-27T07:18:35+00:00",
+    "source_id": "rec_038"
+  },
+  {
+    "subject": "Dave",
+    "relation": "MENTIONED",
+    "object": "CloudFormation",
+    "timestamp": "2023-02-27T07:18:35+00:00",
+    "source_id": "rec_038"
+  },
+  {
+    "subject": "Dave",
+    "relation": "MENTIONED",
+    "object": "Charlie",
+    "timestamp": "2023-02-27T07:18:35+00:00",
+    "source_id": "rec_038"
+  },
+  {
+    "subject": "Dave",
+    "relation": "MENTIONED",
+    "object": "CloudFormation",
+    "timestamp": "2023-02-27T07:18:35+00:00",
+    "source_id": "rec_038"
+  },
+  {
+    "subject": "Dave",
+    "relation": "MENTIONED",
+    "object": "what's not broken",
+    "timestamp": "2023-02-27T07:18:35+00:00",
+    "source_id": "rec_038"
+  },
+  {
+    "subject": "Dave",
+    "relation": "MENTIONED",
+    "object": "production",
+    "timestamp": "2023-02-27T07:18:35+00:00",
+    "source_id": "rec_038"
+  },
+  {
+    "subject": "Dave",
+    "relation": "MENTIONED",
+    "object": "CloudFormation",
+    "timestamp": "2023-02-27T07:18:35+00:00",
+    "source_id": "rec_038"
+  },
+  {
+    "subject": "Alice",
+    "relation": "MENTIONED",
+    "object": "Dave",
+    "timestamp": "2023-03-07T17:38:39+00:00",
+    "source_id": "rec_039"
+  },
+  {
+    "subject": "Alice",
+    "relation": "MENTIONED",
+    "object": "Eve",
+    "timestamp": "2023-03-07T17:38:39+00:00",
+    "source_id": "rec_039"
+  },
+  {
+    "subject": "Alice",
+    "relation": "MENTIONED",
+    "object": "Terraform",
+    "timestamp": "2023-03-07T17:38:39+00:00",
+    "source_id": "rec_039"
+  },
+  {
+    "subject": "Alice",
+    "relation": "MENTIONED",
+    "object": "design reviews",
+    "timestamp": "2023-03-07T17:38:39+00:00",
+    "source_id": "rec_039"
+  },
+  {
+    "subject": "Alice",
+    "relation": "MENTIONED",
+    "object": "IAM mapping doc",
+    "timestamp": "2023-03-07T17:38:39+00:00",
+    "source_id": "rec_039"
+  },
+  {
+    "subject": "Alice",
+    "relation": "ADVOCATED_FOR",
+    "object": "Terraform",
+    "timestamp": "2023-03-07T17:38:39+00:00",
+    "source_id": "rec_039"
+  },
+  {
+    "subject": "Dave",
+    "relation": "MENTIONED",
+    "object": "Eve",
+    "timestamp": "2023-03-08T10:40:56+00:00",
+    "source_id": "rec_040"
+  },
+  {
+    "subject": "Dave",
+    "relation": "MENTIONED",
+    "object": "GCP",
+    "timestamp": "2023-03-08T10:40:56+00:00",
+    "source_id": "rec_040"
+  },
+  {
+    "subject": "Alice",
+    "relation": "MENTIONED",
+    "object": "Ticket CHRONO-207",
+    "timestamp": "2023-03-09T03:56:59+00:00",
+    "source_id": "rec_041"
+  },
+  {
+    "subject": "Dave",
+    "relation": "ASSIGNED_TO",
+    "object": "Ticket CHRONO-207",
+    "timestamp": "2023-03-09T03:56:59+00:00",
+    "source_id": "rec_041"
+  },
+  {
+    "subject": "Dave",
+    "relation": "COMMITTED_CODE",
+    "object": "VPC Peering Terraform script",
+    "timestamp": "2023-03-12T01:57:54+00:00",
+    "source_id": "rec_042"
+  },
+  {
+    "subject": "Dave",
+    "relation": "COMMITTED_CODE",
+    "object": "AWS",
+    "timestamp": "2023-03-12T01:57:54+00:00",
+    "source_id": "rec_042"
+  },
+  {
+    "subject": "Dave",
+    "relation": "COMMITTED_CODE",
+    "object": "GCP",
+    "timestamp": "2023-03-12T01:57:54+00:00",
+    "source_id": "rec_042"
+  },
+  {
+    "subject": "Charlie",
+    "relation": "ASSIGNED_TO",
+    "object": "Ticket CHRONO-205",
+    "timestamp": "2023-03-12T14:20:28+00:00",
+    "source_id": "rec_043"
+  },
+  {
+    "subject": "Charlie",
+    "relation": "RESOLVED",
+    "object": "Ticket CHRONO-205",
+    "timestamp": "2023-03-12T14:20:28+00:00",
+    "source_id": "rec_043"
+  },
+  {
+    "subject": "Eve",
+    "relation": "ASSIGNED_TO",
+    "object": "Bob",
+    "timestamp": "2023-03-15T21:05:53+00:00",
+    "source_id": "rec_044"
+  },
+  {
+    "subject": "Bob",
+    "relation": "ASSIGNED_TO",
+    "object": "database mapping tasks",
+    "timestamp": "2023-03-15T21:05:53+00:00",
+    "source_id": "rec_044"
+  },
+  {
+    "subject": "Bob",
+    "relation": "COMMITTED_CODE",
+    "object": "database migration runbook doc",
+    "timestamp": "2023-03-16T03:35:22+00:00",
+    "source_id": "rec_045"
+  },
+  {
+    "subject": "Bob",
+    "relation": "MENTIONED",
+    "object": "Cloud SQL performance benchmarks",
+    "timestamp": "2023-03-16T03:35:22+00:00",
+    "source_id": "rec_045"
+  },
+  {
+    "subject": "Charlie",
+    "relation": "MENTIONED",
+    "object": "Cloud SQL performance benchmarks",
+    "timestamp": "2023-03-16T03:35:22+00:00",
+    "source_id": "rec_045"
+  },
+  {
+    "subject": "Charlie",
+    "relation": "ASSIGNED_TO",
+    "object": "Ticket CHRONO-208",
+    "timestamp": "2023-03-23T20:06:14+00:00",
+    "source_id": "rec_046"
+  },
+  {
+    "subject": "Charlie",
+    "relation": "MENTIONED",
+    "object": "AWS RDS parameter group reboot",
+    "timestamp": "2023-03-24T07:17:53+00:00",
+    "source_id": "rec_047"
+  },
+  {
+    "subject": "Charlie",
+    "relation": "MENTIONED",
+    "object": "Sunday at 3 AM",
+    "timestamp": "2023-03-24T07:17:53+00:00",
+    "source_id": "rec_047"
+  },
+  {
+    "subject": "Charlie",
+    "relation": "MENTIONED",
+    "object": "Dave",
+    "timestamp": "2023-03-24T07:17:53+00:00",
+    "source_id": "rec_047"
+  },
+  {
+    "subject": "Charlie",
+    "relation": "MENTIONED",
+    "object": "Terraform VPC peering",
+    "timestamp": "2023-03-24T07:17:53+00:00",
+    "source_id": "rec_047"
+  },
+  {
+    "subject": "Charlie",
+    "relation": "ASSIGNED_TO",
+    "object": "Dave",
+    "timestamp": "2023-03-24T07:17:53+00:00",
+    "source_id": "rec_047"
+  },
+  {
+    "subject": "Charlie",
+    "relation": "MENTIONED",
+    "object": "ticket",
+    "timestamp": "2023-03-24T07:17:53+00:00",
+    "source_id": "rec_047"
+  },
+  {
+    "subject": "Dave",
+    "relation": "COMMITTED_CODE",
+    "object": "apply IAM permission boundaries to GCP transition roles",
+    "timestamp": "2023-03-24T10:31:33+00:00",
+    "source_id": "rec_048"
+  },
+  {
+    "subject": "Dave",
+    "relation": "ASSIGNED_TO",
+    "object": "task",
+    "timestamp": "2023-03-29T14:27:57+00:00",
+    "source_id": "rec_049"
+  },
+  {
+    "subject": "Dave",
+    "relation": "MENTIONED",
+    "object": "AWS transit gateway",
+    "timestamp": "2023-03-29T14:27:57+00:00",
+    "source_id": "rec_049"
+  },
+  {
+    "subject": "Dave",
+    "relation": "MENTIONED",
+    "object": "routing tables",
+    "timestamp": "2023-03-29T14:27:57+00:00",
+    "source_id": "rec_049"
+  },
+  {
+    "subject": "Dave",
+    "relation": "MENTIONED",
+    "object": "security",
+    "timestamp": "2023-03-29T14:27:57+00:00",
+    "source_id": "rec_049"
+  },
+  {
+    "subject": "Eve",
+    "relation": "COMMITTED_CODE",
+    "object": "AWS Roles to GCP Service Accounts",
+    "timestamp": "2023-03-31T14:04:30+00:00",
+    "source_id": "rec_050"
+  },
+  {
+    "subject": "Dave",
+    "relation": "MENTIONED",
+    "object": "S3 access from GCP services",
+    "timestamp": "2023-03-31T14:04:30+00:00",
+    "source_id": "rec_050"
+  },
+  {
+    "subject": "Charlie",
+    "relation": "COMMITTED_CODE",
+    "object": "refactor: simplify Terraform service accounts configuration in GCP",
+    "timestamp": "2023-04-09T12:07:34+00:00",
+    "source_id": "rec_051"
+  },
+  {
+    "subject": "Alice",
+    "relation": "MENTIONED",
+    "object": "Ticket CHRONO-204",
+    "timestamp": "2023-04-15T12:00:14+00:00",
+    "source_id": "rec_052"
+  },
+  {
+    "subject": "Charlie",
+    "relation": "ASSIGNED_TO",
+    "object": "Ticket CHRONO-204",
+    "timestamp": "2023-04-15T12:00:14+00:00",
+    "source_id": "rec_052"
+  },
+  {
+    "subject": "Charlie",
+    "relation": "COMMITTED_CODE",
+    "object": "configure GCP VPC and Cloud NAT with Terraform",
+    "timestamp": "2023-04-17T04:36:40+00:00",
+    "source_id": "rec_053"
+  },
+  {
+    "subject": "Bob",
+    "relation": "COMMITTED_CODE",
+    "object": "migration utility script",
+    "timestamp": "2023-04-17T06:35:32+00:00",
+    "source_id": "rec_054"
+  },
+  {
+    "subject": "Bob",
+    "relation": "COMMITTED_CODE",
+    "object": "database schema verification",
+    "timestamp": "2023-04-17T06:35:32+00:00",
+    "source_id": "rec_054"
+  },
+  {
+    "subject": "Bob",
+    "relation": "COMMITTED_CODE",
+    "object": "Postgres config checker for replication settings",
+    "timestamp": "2023-04-18T13:41:44+00:00",
+    "source_id": "rec_055"
+  },
+  {
+    "subject": "Bob",
+    "relation": "ASSIGNED_TO",
+    "object": "Ticket CHRONO-209",
+    "timestamp": "2023-04-20T08:35:29+00:00",
+    "source_id": "rec_056"
+  },
+  {
+    "subject": "Eve",
+    "relation": "MENTIONED",
+    "object": "PG logical replication",
+    "timestamp": "2023-04-23T11:39:21+00:00",
+    "source_id": "rec_057"
+  },
+  {
+    "subject": "Eve",
+    "relation": "ASSIGNED_TO",
+    "object": "Ticket CHRONO-202",
+    "timestamp": "2023-04-25T19:10:37+00:00",
+    "source_id": "rec_058"
+  },
+  {
+    "subject": "Alice",
+    "relation": "RESOLVED",
+    "object": "Ticket CHRONO-202",
+    "timestamp": "2023-04-25T19:10:37+00:00",
+    "source_id": "rec_058"
+  },
+  {
+    "subject": "Charlie",
+    "relation": "COMMITTED_CODE",
+    "object": "feat: build Docker container for staging deployment on GKE",
+    "timestamp": "2023-04-26T00:53:40+00:00",
+    "source_id": "rec_059"
+  },
+  {
+    "subject": "Bob",
+    "relation": "MENTIONED",
+    "object": "PostgreSQL",
+    "timestamp": "2023-04-28T06:36:38+00:00",
+    "source_id": "rec_060"
+  },
+  {
+    "subject": "Bob",
+    "relation": "MENTIONED",
+    "object": "RDS Postgres",
+    "timestamp": "2023-04-28T06:36:38+00:00",
+    "source_id": "rec_060"
+  },
+  {
+    "subject": "Bob",
+    "relation": "MENTIONED",
+    "object": "Cloud SQL",
+    "timestamp": "2023-04-28T06:36:38+00:00",
+    "source_id": "rec_060"
+  },
+  {
+    "subject": "Bob",
+    "relation": "MENTIONED",
+    "object": "AWS",
+    "timestamp": "2023-04-28T06:36:38+00:00",
+    "source_id": "rec_060"
+  },
+  {
+    "subject": "Bob",
+    "relation": "MENTIONED",
+    "object": "Database cutover",
+    "timestamp": "2023-04-28T14:34:02+00:00",
+    "source_id": "rec_061"
+  },
+  {
+    "subject": "Cloud SQL PostgreSQL instance",
+    "relation": "COMMITTED_CODE",
+    "object": "primary",
+    "timestamp": "2023-04-28T14:34:02+00:00",
+    "source_id": "rec_061"
+  },
+  {
+    "subject": "Alice",
+    "relation": "MENTIONED",
+    "object": "team",
+    "timestamp": "2023-05-01T11:30:39+00:00",
+    "source_id": "rec_062"
+  },
+  {
+    "subject": "Alice",
+    "relation": "MENTIONED",
+    "object": "GCP",
+    "timestamp": "2023-05-01T11:30:39+00:00",
+    "source_id": "rec_062"
+  },
+  {
+    "subject": "Alice",
+    "relation": "MENTIONED",
+    "object": "AWS",
+    "timestamp": "2023-05-01T11:30:39+00:00",
+    "source_id": "rec_062"
+  },
+  {
+    "subject": "Alice",
+    "relation": "MENTIONED",
+    "object": "AWS migration",
+    "timestamp": "2023-05-01T11:30:39+00:00",
+    "source_id": "rec_062"
+  },
+  {
+    "subject": "Alice",
+    "relation": "MENTIONED",
+    "object": "code base cleanup",
+    "timestamp": "2023-05-01T11:30:39+00:00",
+    "source_id": "rec_062"
+  },
+  {
+    "subject": "AWS",
+    "relation": "ARGUED_AGAINST",
+    "object": "GCP",
+    "timestamp": "2023-05-01T11:30:39+00:00",
+    "source_id": "rec_062"
+  },
+  {
+    "subject": "Charlie",
+    "relation": "RESOLVED",
+    "object": "Ticket CHRONO-303",
+    "timestamp": "2023-05-03T10:40:25+00:00",
+    "source_id": "rec_063"
+  },
+  {
+    "subject": "Charlie",
+    "relation": "ASSIGNED_TO",
+    "object": "Ticket CHRONO-303",
+    "timestamp": "2023-05-03T10:40:25+00:00",
+    "source_id": "rec_063"
+  },
+  {
+    "subject": "Eve",
+    "relation": "COMMITTED_CODE",
+    "object": "connection pool validation tests",
+    "timestamp": "2023-05-05T12:56:41+00:00",
+    "source_id": "rec_064"
+  },
+  {
+    "subject": "Eve",
+    "relation": "COMMITTED_CODE",
+    "object": "GCP staging",
+    "timestamp": "2023-05-05T12:56:41+00:00",
+    "source_id": "rec_064"
+  },
+  {
+    "subject": "Charlie",
+    "relation": "COMMITTED_CODE",
+    "object": "DNS records updated",
+    "timestamp": "2023-05-07T13:40:51+00:00",
+    "source_id": "rec_065"
+  },
+  {
+    "subject": "Eve",
+    "relation": "ASSIGNED_TO",
+    "object": "Ticket CHRONO-307",
+    "timestamp": "2023-05-09T18:42:37+00:00",
+    "source_id": "rec_066"
+  },
+  {
+    "subject": "Alice",
+    "relation": "RESOLVED",
+    "object": "Ticket CHRONO-307",
+    "timestamp": "2023-05-09T18:42:37+00:00",
+    "source_id": "rec_066"
+  },
+  {
+    "subject": "Charlie",
+    "relation": "COMMITTED_CODE",
+    "object": "update deployment pipelines to target GCP GKE clusters",
+    "timestamp": "2023-05-12T18:38:53+00:00",
+    "source_id": "rec_067"
+  },
+  {
+    "subject": "Dave",
+    "relation": "MENTIONED",
+    "object": "deleting the AWS resources",
+    "timestamp": "2023-05-16T22:33:55+00:00",
+    "source_id": "rec_068"
+  },
+  {
+    "subject": "Charlie",
+    "relation": "ASSIGNED_TO",
+    "object": "Ticket CHRONO-308",
+    "timestamp": "2023-05-18T04:32:33+00:00",
+    "source_id": "rec_070"
+  },
+  {
+    "subject": "Alice",
+    "relation": "MENTIONED",
+    "object": "Ticket CHRONO-309",
+    "timestamp": "2023-05-20T09:53:35+00:00",
+    "source_id": "rec_071"
+  },
+  {
+    "subject": "Dave",
+    "relation": "ASSIGNED_TO",
+    "object": "Ticket CHRONO-309",
+    "timestamp": "2023-05-20T09:53:35+00:00",
+    "source_id": "rec_071"
+  },
+  {
+    "subject": "Eve",
+    "relation": "MENTIONED",
+    "object": "staging GKE cluster",
+    "timestamp": "2023-05-23T01:47:47+00:00",
+    "source_id": "rec_072"
+  },
+  {
+    "subject": "Eve",
+    "relation": "MENTIONED",
+    "object": "connection pools",
+    "timestamp": "2023-05-23T01:47:47+00:00",
+    "source_id": "rec_072"
+  },
+  {
+    "subject": "Alice",
+    "relation": "MENTIONED",
+    "object": "Ticket CHRONO-306",
+    "timestamp": "2023-05-24T09:12:16+00:00",
+    "source_id": "rec_073"
+  },
+  {
+    "subject": "Dave",
+    "relation": "ASSIGNED_TO",
+    "object": "Ticket CHRONO-306",
+    "timestamp": "2023-05-24T09:12:16+00:00",
+    "source_id": "rec_073"
+  },
+  {
+    "subject": "Charlie",
+    "relation": "COMMITTED_CODE",
+    "object": "adjust GKE ingress resource limits and SSL certificates config",
+    "timestamp": "2023-05-25T04:45:42+00:00",
+    "source_id": "rec_074"
+  },
+  {
+    "subject": "Eve",
+    "relation": "MENTIONED",
+    "object": "GCP",
+    "timestamp": "2023-05-25T08:52:32+00:00",
+    "source_id": "rec_075"
+  },
+  {
+    "subject": "Eve",
+    "relation": "MENTIONED",
+    "object": "PG replication",
+    "timestamp": "2023-05-25T08:52:32+00:00",
+    "source_id": "rec_075"
+  },
+  {
+    "subject": "Bob",
+    "relation": "COMMITTED_CODE",
+    "object": "database sync",
+    "timestamp": "2023-05-28T17:17:55+00:00",
+    "source_id": "rec_076"
+  },
+  {
+    "subject": "Dave",
+    "relation": "COMMITTED_CODE",
+    "object": "teardown of the old RDS instance",
+    "timestamp": "2023-05-31T11:45:34+00:00",
+    "source_id": "rec_078"
+  },
+  {
+    "subject": "Dave",
+    "relation": "MENTIONED",
+    "object": "AWS resources",
+    "timestamp": "2023-05-31T11:45:34+00:00",
+    "source_id": "rec_078"
+  },
+  {
+    "subject": "Dave",
+    "relation": "MENTIONED",
+    "object": "Cloud SQL",
+    "timestamp": "2023-05-31T11:45:34+00:00",
+    "source_id": "rec_078"
+  },
+  {
+    "subject": "Bob",
+    "relation": "COMMITTED_CODE",
+    "object": "script",
+    "timestamp": "2023-06-06T20:23:23+00:00",
+    "source_id": "rec_079"
+  },
+  {
+    "subject": "Bob",
+    "relation": "COMMITTED_CODE",
+    "object": "replication lag monitoring script",
+    "timestamp": "2023-06-07T02:29:25+00:00",
+    "source_id": "rec_080"
+  },
+  {
+    "subject": "Bob",
+    "relation": "COMMITTED_CODE",
+    "object": "Cloud SQL",
+    "timestamp": "2023-06-07T02:29:25+00:00",
+    "source_id": "rec_080"
+  },
+  {
+    "subject": "Alice",
+    "relation": "RESOLVED",
+    "object": "Ticket CHRONO-304",
+    "timestamp": "2023-06-07T13:13:09+00:00",
+    "source_id": "rec_081"
+  },
+  {
+    "subject": "Bob",
+    "relation": "ASSIGNED_TO",
+    "object": "Ticket CHRONO-304",
+    "timestamp": "2023-06-07T13:13:09+00:00",
+    "source_id": "rec_081"
+  },
+  {
+    "subject": "Bob",
+    "relation": "ASSIGNED_TO",
+    "object": "Ticket CHRONO-302",
+    "timestamp": "2023-06-11T10:18:21+00:00",
+    "source_id": "rec_082"
+  },
+  {
+    "subject": "Charlie",
+    "relation": "COMMITTED_CODE",
+    "object": "Kubernetes deployment manifests",
+    "timestamp": "2023-06-14T22:36:36+00:00",
+    "source_id": "rec_083"
+  },
+  {
+    "subject": "Charlie",
+    "relation": "COMMITTED_CODE",
+    "object": "GKE",
+    "timestamp": "2023-06-14T22:36:36+00:00",
+    "source_id": "rec_083"
+  },
+  {
+    "subject": "Charlie",
+    "relation": "COMMITTED_CODE",
+    "object": "core services",
+    "timestamp": "2023-06-14T22:36:36+00:00",
+    "source_id": "rec_083"
+  },
+  {
+    "subject": "Dave",
+    "relation": "COMMITTED_CODE",
+    "object": "AWS IAM teardown scripts",
+    "timestamp": "2023-06-16T11:04:10+00:00",
+    "source_id": "rec_084"
+  },
+  {
+    "subject": "Dave",
+    "relation": "MENTIONED",
+    "object": "AWS IAM teardown scripts",
+    "timestamp": "2023-06-16T11:04:10+00:00",
+    "source_id": "rec_084"
+  },
+  {
+    "subject": "Dave",
+    "relation": "MENTIONED",
+    "object": "git repo",
+    "timestamp": "2023-06-16T11:04:10+00:00",
+    "source_id": "rec_084"
+  },
+  {
+    "subject": "Dave",
+    "relation": "MENTIONED",
+    "object": "Bob",
+    "timestamp": "2023-06-16T11:04:10+00:00",
+    "source_id": "rec_084"
+  },
+  {
+    "subject": "Dave",
+    "relation": "MENTIONED",
+    "object": "GCP database sync",
+    "timestamp": "2023-06-16T11:04:10+00:00",
+    "source_id": "rec_084"
+  },
+  {
+    "subject": "Dave",
+    "relation": "COMMITTED_CODE",
+    "object": "AWS teardown utility",
+    "timestamp": "2023-06-17T16:50:42+00:00",
+    "source_id": "rec_085"
+  },
+  {
+    "subject": "Dave",
+    "relation": "COMMITTED_CODE",
+    "object": "EC2 cleanup",
+    "timestamp": "2023-06-17T16:50:42+00:00",
+    "source_id": "rec_085"
+  },
+  {
+    "subject": "Dave",
+    "relation": "COMMITTED_CODE",
+    "object": "RDS cleanup",
+    "timestamp": "2023-06-17T16:50:42+00:00",
+    "source_id": "rec_085"
+  },
+  {
+    "subject": "Dave",
+    "relation": "COMMITTED_CODE",
+    "object": "VPC cleanup",
+    "timestamp": "2023-06-17T16:50:42+00:00",
+    "source_id": "rec_085"
+  },
+  {
+    "subject": "Eve",
+    "relation": "COMMITTED_CODE",
+    "object": "system integration tests for GCP staging services",
+    "timestamp": "2023-06-18T15:06:23+00:00",
+    "source_id": "rec_086"
+  },
+  {
+    "subject": "Bob",
+    "relation": "ASSIGNED_TO",
+    "object": "Ticket CHRONO-301",
+    "timestamp": "2023-06-19T04:13:59+00:00",
+    "source_id": "rec_087"
+  },
+  {
+    "subject": "Charlie",
+    "relation": "ASSIGNED_TO",
+    "object": "Ticket CHRONO-305",
+    "timestamp": "2023-06-22T07:30:15+00:00",
+    "source_id": "rec_088"
+  },
+  {
+    "subject": "Alice",
+    "relation": "MENTIONED",
+    "object": "Bob",
+    "timestamp": "2023-06-23T14:51:29+00:00",
+    "source_id": "rec_089"
+  },
+  {
+    "subject": "Alice",
+    "relation": "MENTIONED",
+    "object": "Charlie",
+    "timestamp": "2023-06-23T14:51:29+00:00",
+    "source_id": "rec_089"
+  },
+  {
+    "subject": "Alice",
+    "relation": "MENTIONED",
+    "object": "Dave",
+    "timestamp": "2023-06-23T14:51:29+00:00",
+    "source_id": "rec_089"
+  },
+  {
+    "subject": "Alice",
+    "relation": "MENTIONED",
+    "object": "AWS",
+    "timestamp": "2023-06-23T14:51:29+00:00",
+    "source_id": "rec_089"
+  },
+  {
+    "subject": "Alice",
+    "relation": "MENTIONED",
+    "object": "DNS cutover",
+    "timestamp": "2023-06-23T14:51:29+00:00",
+    "source_id": "rec_089"
+  },
+  {
+    "subject": "Alice",
+    "relation": "MENTIONED",
+    "object": "Friday night",
+    "timestamp": "2023-06-23T14:51:29+00:00",
+    "source_id": "rec_089"
+  },
+  {
+    "subject": "Bob",
+    "relation": "ASSIGNED_TO",
+    "object": "DNS cutover",
+    "timestamp": "2023-06-23T14:51:29+00:00",
+    "source_id": "rec_089"
+  },
+  {
+    "subject": "Charlie",
+    "relation": "ASSIGNED_TO",
+    "object": "DNS cutover",
+    "timestamp": "2023-06-23T14:51:29+00:00",
+    "source_id": "rec_089"
+  },
+  {
+    "subject": "Dave",
+    "relation": "ASSIGNED_TO",
+    "object": "DNS cutover",
+    "timestamp": "2023-06-23T14:51:29+00:00",
+    "source_id": "rec_089"
+  },
+  {
+    "subject": "Dave",
+    "relation": "COMMITTED_CODE",
+    "object": "script: run AWS resources cleanup and archive old S3 buckets",
+    "timestamp": "2023-06-29T11:12:28+00:00",
+    "source_id": "rec_090"
+  }
+]
