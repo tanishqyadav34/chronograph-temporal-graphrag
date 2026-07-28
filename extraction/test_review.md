@@ -1,6 +1,7 @@
 # Test Review: Triple Extraction Quality
 
-Review of **15** records processed with Groq model `llama-3.1-8b-instant`.
+Review of **20** records processed with Groq model `llama-3.1-8b-instant`.
+Processed in batches of **10** records per API call.
 
 ---
 
@@ -17,7 +18,6 @@ Review of **15** records processed with Groq model `llama-3.1-8b-instant`.
 | # | Subject | Relation | Object |
 |---|---------|----------|--------|
 | 1 | Eve | ASSIGNED_TO | Ticket CHRONO-109 |
-| 2 | Alice | RESOLVED | Ticket CHRONO-109 |
 
 ---
 
@@ -65,12 +65,8 @@ Review of **15** records processed with Groq model `llama-3.1-8b-instant`.
 ### Extracted Triples
 | # | Subject | Relation | Object |
 |---|---------|----------|--------|
-| 1 | Dave | MENTIONED | Bob |
-| 2 | Dave | MENTIONED | POC |
-| 3 | Dave | MENTIONED | team |
-| 4 | Dave | MENTIONED | core databases |
-| 5 | Dave | ARGUED_AGAINST | moving the core databases |
-| 6 | Dave | MENTIONED | committing |
+| 1 | Dave | MENTIONED | POC |
+| 2 | Dave | ARGUED_AGAINST | moving the core databases |
 
 ---
 
@@ -87,7 +83,6 @@ Review of **15** records processed with Groq model `llama-3.1-8b-instant`.
 | # | Subject | Relation | Object |
 |---|---------|----------|--------|
 | 1 | Dave | COMMITTED_CODE | mock workload scripts |
-| 2 | Dave | COMMITTED_CODE | AWS RDS benchmarks |
 
 ---
 
@@ -104,7 +99,6 @@ Review of **15** records processed with Groq model `llama-3.1-8b-instant`.
 | # | Subject | Relation | Object |
 |---|---------|----------|--------|
 | 1 | Eve | ASSIGNED_TO | Ticket CHRONO-107 |
-| 2 | Alice | RESOLVED | Ticket CHRONO-107 |
 
 ---
 
@@ -120,7 +114,7 @@ Review of **15** records processed with Groq model `llama-3.1-8b-instant`.
 ### Extracted Triples
 | # | Subject | Relation | Object |
 |---|---------|----------|--------|
-| 1 | Dave | ADVOCATED_FOR | AWS |
+| 1 | Dave | MENTIONED | Redshift |
 | 2 | Dave | ARGUED_AGAINST | GCP |
 
 ---
@@ -137,9 +131,7 @@ Review of **15** records processed with Groq model `llama-3.1-8b-instant`.
 ### Extracted Triples
 | # | Subject | Relation | Object |
 |---|---------|----------|--------|
-| 1 | Charlie | ADVOCATED_FOR | GCP BigQuery |
-| 2 | Charlie | ARGUED_AGAINST | Amazon Redshift |
-| 3 | Charlie | MENTIONED | GCP's GKE options |
+| 1 | Charlie | MENTIONED | GCP BigQuery |
 
 ---
 
@@ -156,7 +148,6 @@ Review of **15** records processed with Groq model `llama-3.1-8b-instant`.
 | # | Subject | Relation | Object |
 |---|---------|----------|--------|
 | 1 | Dave | COMMITTED_CODE | github actions |
-| 2 | Dave | COMMITTED_CODE | aws-cli dependencies |
 
 ---
 
@@ -172,9 +163,8 @@ Review of **15** records processed with Groq model `llama-3.1-8b-instant`.
 ### Extracted Triples
 | # | Subject | Relation | Object |
 |---|---------|----------|--------|
-| 1 | Bob | ARGUED_AGAINST | database migration |
-| 2 | Bob | ARGUED_AGAINST | moving Postgres database from AWS RDS to GCP Cloud SQL |
-| 3 | Bob | ARGUED_AGAINST | high-risk database migration |
+| 1 | Bob | MENTIONED | database migration |
+| 2 | Bob | ARGUED_AGAINST | moving our primary Postgres database |
 
 ---
 
@@ -207,11 +197,9 @@ Review of **15** records processed with Groq model `llama-3.1-8b-instant`.
 | # | Subject | Relation | Object |
 |---|---------|----------|--------|
 | 1 | Alice | MENTIONED | Jira tickets |
-| 2 | Alice | MENTIONED | AWS/GCP analysis |
-| 3 | Alice | MENTIONED | POC planning |
-| 4 | Alice | MENTIONED | Bob |
-| 5 | Alice | MENTIONED | database risk analysis |
-| 6 | Bob | ASSIGNED_TO | database risk analysis |
+| 2 | Bob | MENTIONED | database risk analysis |
+| 3 | Alice | MENTIONED | AWS/GCP analysis |
+| 4 | Alice | MENTIONED | POC planning |
 
 ---
 
@@ -227,12 +215,10 @@ Review of **15** records processed with Groq model `llama-3.1-8b-instant`.
 ### Extracted Triples
 | # | Subject | Relation | Object |
 |---|---------|----------|--------|
-| 1 | Charlie | MENTIONED | Alice |
-| 2 | Charlie | MENTIONED | Bob |
-| 3 | Charlie | MENTIONED | Cloud SQL |
+| 1 | Bob | MENTIONED | database risk analysis |
+| 2 | Charlie | MENTIONED | Cloud SQL |
+| 3 | Charlie | MENTIONED | replication tools |
 | 4 | Charlie | MENTIONED | PostgreSQL |
-| 5 | Charlie | MENTIONED | replication tools |
-| 6 | Charlie | MENTIONED | migrating |
 
 ---
 
@@ -248,7 +234,8 @@ Review of **15** records processed with Groq model `llama-3.1-8b-instant`.
 ### Extracted Triples
 | # | Subject | Relation | Object |
 |---|---------|----------|--------|
-| 1 | Charlie | ASSIGNED_TO | Ticket CHRONO-101 |
+| 1 | Alice | ASSIGNED_TO | Ticket CHRONO-101 |
+| 2 | Charlie | MENTIONED | Ticket CHRONO-101 |
 
 ---
 
@@ -264,6 +251,93 @@ Review of **15** records processed with Groq model `llama-3.1-8b-instant`.
 ### Extracted Triples
 | # | Subject | Relation | Object |
 |---|---------|----------|--------|
-| 1 | Bob | COMMITTED_CODE | docs |
+| 1 | Bob | COMMITTED_CODE | analyze pg_dump and logical replication options for RDS Postgres |
+
+---
+
+## Record 16: `rec_016`
+
+### Input
+- **Source:** `git`
+- **Author:** Charlie
+- **Timestamp:** 2023-01-21T05:20:03+00:00
+- **Content:**
+  > chore: setup terraform remote state bucket in GCS
+
+### Extracted Triples
+| # | Subject | Relation | Object |
+|---|---------|----------|--------|
+| 1 | Charlie | COMMITTED_CODE | setup terraform remote state bucket in GCS |
+
+---
+
+## Record 17: `rec_017`
+
+### Input
+- **Source:** `slack`
+- **Author:** Charlie
+- **Timestamp:** 2023-01-21T06:39:43+00:00
+- **Content:**
+  > GCP IAM uses projects and folders which actually makes resource organization a lot easier than AWS account hierarchies. I advocate for migrating containerized apps first.
+
+### Extracted Triples
+| # | Subject | Relation | Object |
+|---|---------|----------|--------|
+| 1 | Charlie | MENTIONED | GCP IAM |
+| 2 | Charlie | MENTIONED | projects and folders |
+| 3 | Charlie | MENTIONED | containerized apps |
+| 4 | Charlie | ADVOCATED_FOR | migrating containerized apps first |
+
+---
+
+## Record 18: `rec_018`
+
+### Input
+- **Source:** `git`
+- **Author:** Eve
+- **Timestamp:** 2023-01-22T23:50:25+00:00
+- **Content:**
+  > docs: research GCP IAM project folder architecture structures
+
+### Extracted Triples
+| # | Subject | Relation | Object |
+|---|---------|----------|--------|
+| 1 | Eve | COMMITTED_CODE | research GCP IAM project folder architecture structures |
+
+---
+
+## Record 19: `rec_019`
+
+### Input
+- **Source:** `jira`
+- **Author:** Bob
+- **Timestamp:** 2023-01-25T14:43:55+00:00
+- **Content:**
+  > Ticket CHRONO-104: 'Measure Network Latency between AWS VPC and GCP VPC' | Status: Done | Assignee: Bob
+
+### Extracted Triples
+| # | Subject | Relation | Object |
+|---|---------|----------|--------|
+| 1 | Bob | ASSIGNED_TO | Ticket CHRONO-104 |
+| 2 | Bob | RESOLVED | Ticket CHRONO-104 |
+
+---
+
+## Record 20: `rec_020`
+
+### Input
+- **Source:** `slack`
+- **Author:** Alice
+- **Timestamp:** 2023-01-28T11:17:37+00:00
+- **Content:**
+  > Let's keep an open mind. If GCP can offer cost optimizations and simplify DevOps overhead, it might be worth exploring. Charlie, can you write up a quick comparative doc?
+
+### Extracted Triples
+| # | Subject | Relation | Object |
+|---|---------|----------|--------|
+| 1 | Alice | MENTIONED | GCP |
+| 2 | Alice | MENTIONED | cost optimizations |
+| 3 | Alice | MENTIONED | DevOps overhead |
+| 4 | Charlie | MENTIONED | comparative doc |
 
 ---
