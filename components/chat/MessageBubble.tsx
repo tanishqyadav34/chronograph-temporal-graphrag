@@ -1,12 +1,37 @@
 "use client";
 
 import { useState } from "react";
-import { Message } from "@/lib/types";
-import { ChevronDown, Hexagon, User } from "lucide-react";
+import { Message, Source } from "@/lib/types";
+import { ChevronDown, Hexagon, User, Paperclip } from "lucide-react";
 import SourceCard from "./SourceCard";
+import { useHighlight } from "@/lib/highlight-context";
 
 interface MessageBubbleProps {
   message: Message;
+}
+
+function formatTime(iso: string) {
+  const date = new Date(iso);
+  if (Number.isNaN(date.getTime())) return iso;
+  return date.toLocaleTimeString([], { hour: "numeric", minute: "2-digit" });
+}
+
+/** Short citation label for a source: "[CHRONO-104]", "[Slack: Jan 17]", "[Git: Jan 17]", "[report.txt]" */
+function citationLabel(source: Source): string {
+  if (source.platform === "jira") {
+    const m = source.title.match(/CHRONO-\d+/);
+    return m ? m[0] : "Jira";
+  }
+  if (source.platform === "file") {
+    const name = source.title.replace(/^Attached:\s*/i, "") || "File";
+    return name.length > 18 ? name.slice(0, 18) + "…" : name;
+  }
+  const date = new Date(source.timestamp);
+  const day = Number.isNaN(date.getTime())
+    ? ""
+    : date.toLocaleDateString([], { month: "short", day: "numeric" });
+  const label = source.platform === "slack" ? "Slack" : "Git";
+  return `${label}: ${day}`.trim();
 }
 
 function formatContent(content: string) {
@@ -111,7 +136,9 @@ function formatContent(content: string) {
 
 export default function MessageBubble({ message }: MessageBubbleProps) {
   const [sourcesOpen, setSourcesOpen] = useState(false);
+  const { setHighlight } = useHighlight();
   const isUser = message.role === "user";
+  const showPills = !isUser && message.sources && message.sources.length > 0;
 
   return (
     <div className={`flex gap-3 ${isUser ? "flex-row-reverse" : ""}`}>
@@ -119,7 +146,7 @@ export default function MessageBubble({ message }: MessageBubbleProps) {
       <div
         className={`flex h-7 w-7 flex-shrink-0 items-center justify-center rounded-full ${
           isUser
-            ? "bg-gradient-to-br from-cyan-400 to-blue-600"
+            ? "bg-gradient-to-br from-indigo-500 to-indigo-700"
             : "bg-gradient-to-br from-chrono-primary to-chrono-violet"
         }`}
       >
@@ -138,8 +165,11 @@ export default function MessageBubble({ message }: MessageBubbleProps) {
             <span className="text-xs font-semibold text-chrono-text">
               ChronoGraph
             </span>
-            <span className="text-[10px] text-chrono-text-dim">
-              {message.timestamp}
+            <span
+              className="text-[10px] text-chrono-text-dim"
+              suppressHydrationWarning
+            >
+              {formatTime(message.timestamp)}
             </span>
           </div>
         )}
@@ -157,11 +187,52 @@ export default function MessageBubble({ message }: MessageBubbleProps) {
           </div>
         </div>
 
+        {/* Attached-file chip (user) */}
+        {isUser && message.attachment && (
+          <div className="mb-1.5 flex items-center gap-1.5 rounded-md border border-chrono-border bg-chrono-surface-light px-2 py-1">
+            <Paperclip className="h-3 w-3 flex-shrink-0 text-chrono-cyan" />
+            <span className="max-w-[220px] truncate text-[10px] font-medium text-chrono-text-muted">
+              {message.attachment.name}
+            </span>
+          </div>
+        )}
+
         {/* Timestamp for user */}
         {isUser && (
-          <p className="mt-1 px-1 text-[10px] text-chrono-text-dim">
-            {message.timestamp}
+          <p
+            className="mt-1 px-1 text-[10px] text-chrono-text-dim"
+            suppressHydrationWarning
+          >
+            {formatTime(message.timestamp)}
           </p>
+        )}
+
+        {/* Inline citation pills — hover highlights the matching node/event in the right pane */}
+        {showPills && (
+          <div className="mt-2 flex flex-wrap gap-1.5">
+            {message.sources!.slice(0, 6).map((source) => {
+              // File sources have no node/event to highlight — skip cross-pane.
+              const canHighlight = source.platform !== "file";
+              return (
+                <button
+                  key={source.id}
+                  onMouseEnter={() => canHighlight && setHighlight(source.id)}
+                  onMouseLeave={() => setHighlight(null)}
+                  onFocus={() => canHighlight && setHighlight(source.id)}
+                  onBlur={() => setHighlight(null)}
+                  onClick={() => setSourcesOpen(true)}
+                  className="rounded-md border border-chrono-border bg-chrono-surface-light px-2 py-0.5 text-[10px] font-medium text-chrono-text-muted transition-all duration-150 hover:border-chrono-primary/60 hover:text-chrono-text hover:shadow-[0_0_8px_rgba(99,102,241,0.35)]"
+                  title={
+                    canHighlight
+                      ? `Highlight in graph & timeline (${source.id})`
+                      : "Attached document"
+                  }
+                >
+                  [{citationLabel(source)}]
+                </button>
+              );
+            })}
+          </div>
         )}
 
         {/* Sources */}
@@ -169,7 +240,7 @@ export default function MessageBubble({ message }: MessageBubbleProps) {
           <div className="mt-2">
             <button
               onClick={() => setSourcesOpen(!sourcesOpen)}
-              className="flex items-center gap-1.5 text-[11px] font-medium text-chrono-cyan transition-colors hover:text-cyan-300"
+              className="flex items-center gap-1.5 text-[11px] font-medium text-chrono-cyan transition-colors hover:text-teal-300"
             >
               <ChevronDown
                 className={`h-3 w-3 transition-transform duration-200 ${

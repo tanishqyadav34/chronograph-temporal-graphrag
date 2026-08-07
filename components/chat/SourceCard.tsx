@@ -1,18 +1,20 @@
 "use client";
 
 import { Source } from "@/lib/types";
-import { Slack, Github, Jira, ExternalLink } from "lucide-react";
+import { Slack, Github, Ticket, FileText, ExternalLink } from "lucide-react";
 
 const platformIcons: Record<Source["platform"], React.ElementType> = {
   slack: Slack,
   github: Github,
-  jira: Jira,
+  jira: Ticket,
+  file: FileText,
 };
 
 const platformColors: Record<Source["platform"], string> = {
   slack: "#e01e5a",
-  github: "#ffffff",
+  github: "#8b949e",
   jira: "#2684ff",
+  file: "#64748b",
 };
 
 interface SourceCardProps {
