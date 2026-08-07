@@ -4,6 +4,41 @@
 
 @import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap');
 
+/* Light theme (default) — slate/gray professional palette.
+   Colors are rgb triplets consumed by the tailwind config. */
+:root {
+  --chrono-bg: 241 245 249;            /* slate-100 */
+  --chrono-bg-secondary: 226 232 240;  /* slate-200 */
+  --chrono-surface: 255 255 255;       /* white */
+  --chrono-surface-light: 226 232 240; /* slate-200 */
+  --chrono-border: rgba(100, 116, 139, 0.18);
+  --chrono-primary: 79 70 229;         /* indigo-600 */
+  --chrono-primary-hover: 67 56 202;   /* indigo-700 */
+  --chrono-violet: 99 102 241;         /* indigo-500 (muted accent) */
+  --chrono-cyan: 13 148 136;           /* teal-600 */
+  --chrono-green: 5 150 105;           /* emerald-600 */
+  --chrono-text: 15 23 42;             /* slate-900 */
+  --chrono-text-muted: 71 85 105;      /* slate-600 */
+  --chrono-text-dim: 100 116 139;      /* slate-500 */
+}
+
+/* Dark theme — slate-900 based, muted technical accents */
+.dark {
+  --chrono-bg: 15 23 42;               /* slate-900 */
+  --chrono-bg-secondary: 2 6 23;       /* slate-950 */
+  --chrono-surface: 30 41 59;          /* slate-800 */
+  --chrono-surface-light: 51 65 85;    /* slate-700 */
+  --chrono-border: rgba(148, 163, 184, 0.16);
+  --chrono-primary: 99 102 241;        /* indigo-500 */
+  --chrono-primary-hover: 79 70 229;   /* indigo-600 */
+  --chrono-violet: 129 140 248;        /* indigo-400 (muted accent) */
+  --chrono-cyan: 45 212 191;           /* teal-400 */
+  --chrono-green: 34 197 94;           /* green-500 */
+  --chrono-text: 241 245 249;          /* slate-100 */
+  --chrono-text-muted: 148 163 184;    /* slate-400 */
+  --chrono-text-dim: 100 116 139;      /* slate-500 */
+}
+
 @layer base {
   body {
     @apply bg-chrono-bg text-chrono-text font-sans antialiased;
