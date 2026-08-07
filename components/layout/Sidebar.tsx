@@ -5,28 +5,88 @@ import {
   Plus,
   Slack,
   Github,
-  Jira,
-  ChevronRight,
+  Ticket,
   Settings,
-  User,
   MessageSquare,
+  Trash2,
+  RefreshCw,
 } from "lucide-react";
-import { mockConversations } from "@/lib/mockConversations";
+import { useChat } from "@/lib/chat-context";
+import SettingsModal from "./SettingsModal";
 
-export default function Sidebar() {
-  const [activeConv, setActiveConv] = useState("conv-1");
+interface SidebarProps {
+  onNewConversation?: () => void;
+}
+
+function timeAgo(iso: string): string {
+  const date = new Date(iso);
+  if (Number.isNaN(date.getTime())) return iso;
+  const diffMs = Date.now() - date.getTime();
+  const mins = Math.floor(diffMs / 60_000);
+  if (mins < 1) return "Just now";
+  if (mins < 60) return `${mins}m ago`;
+  const hours = Math.floor(mins / 60);
+  if (hours < 24) return `${hours}h ago`;
+  const days = Math.floor(hours / 24);
+  if (days < 7) return `${days}d ago`;
+  return date.toLocaleDateString([], { month: "short", day: "numeric" });
+}
+
+export default function Sidebar({ onNewConversation }: SidebarProps) {
+  const {
+    conversations,
+    activeId,
+    selectConversation,
+    removeConversation,
+    newConversation,
+  } = useChat();
+
+  const [syncedMinutesAgo, setSyncedMinutesAgo] = useState<Record<string, number>>({
+    slack: 120,
+    github: 300,
+    jira: 45,
+  });
+  const [syncing, setSyncing] = useState(false);
+
+  const formatSync = (minutes: number) => {
+    if (syncing) return "Syncing…";
+    if (minutes <= 0) return "Synced just now";
+    if (minutes < 60) return `Synced ${minutes}m ago`;
+    return `Synced ${Math.round(minutes / 60)}h ago`;
+  };
+
+  const forceSync = () => {
+    if (syncing) return;
+    setSyncing(true);
+    // Mock sync: reset all timestamps to "just now" after a short delay.
+    setTimeout(() => {
+      setSyncedMinutesAgo({ slack: 0, github: 0, jira: 0 });
+      setSyncing(false);
+    }, 900);
+  };
+
+  const handleNew = () => {
+    // Let the page-level handler own creation (it also closes the mobile
+    // drawer and switches to the chat tab). Falls back to context directly
+    // if no handler is provided (e.g. standalone usage).
+    if (onNewConversation) onNewConversation();
+    else newConversation();
+  };
 
   const dataSources = [
     { id: "slack", name: "Slack", icon: Slack, color: "#e01e5a" },
-    { id: "github", name: "GitHub", icon: Github, color: "#ffffff" },
-    { id: "jira", name: "Jira", icon: Jira, color: "#2684ff" },
+    { id: "github", name: "GitHub", icon: Github, color: "#8b949e" },
+    { id: "jira", name: "Jira", icon: Ticket, color: "#2684ff" },
   ];
 
   return (
     <aside className="flex h-full w-64 flex-col border-r border-chrono-border bg-chrono-surface">
       {/* New Conversation */}
       <div className="p-3">
-        <button className="flex w-full items-center justify-center gap-2 rounded-xl bg-gradient-to-r from-chrono-primary to-chrono-violet px-4 py-2.5 text-sm font-semibold text-white shadow-lg shadow-chrono-primary/20 transition-all duration-200 hover:shadow-xl hover:shadow-chrono-primary/30 hover:brightness-110 active:scale-[0.98]">
+        <button
+          onClick={handleNew}
+          className="flex w-full items-center justify-center gap-2 rounded-xl bg-gradient-to-r from-chrono-primary to-chrono-violet px-4 py-2.5 text-sm font-semibold text-white shadow-lg shadow-chrono-primary/20 transition-all duration-200 hover:shadow-xl hover:shadow-chrono-primary/30 hover:brightness-110 active:scale-[0.98]"
+        >
           <Plus className="h-4 w-4" />
           New Conversation
         </button>
@@ -38,13 +98,26 @@ export default function Sidebar() {
           Recent Conversations
         </h3>
         <div className="space-y-0.5">
-          {mockConversations.map((conv) => {
-            const isActive = conv.id === activeConv;
+          {conversations.length === 0 && (
+            <p className="px-3 py-2 text-xs text-chrono-text-dim">
+              No conversations yet.
+            </p>
+          )}
+          {conversations.map((conv) => {
+            const isActive = conv.id === activeId;
             return (
-              <button
+              <div
                 key={conv.id}
-                onClick={() => setActiveConv(conv.id)}
-                className={`group relative flex w-full items-start gap-2.5 rounded-lg px-3 py-2.5 text-left transition-all duration-150 ${
+                role="button"
+                tabIndex={0}
+                onClick={() => selectConversation(conv.id)}
+                onKeyDown={(e) => {
+                  if (e.key === "Enter" || e.key === " ") {
+                    e.preventDefault();
+                    selectConversation(conv.id);
+                  }
+                }}
+                className={`group relative flex w-full cursor-pointer items-start gap-2.5 rounded-lg px-3 py-2.5 text-left transition-all duration-150 focus:outline-none focus-visible:ring-1 focus-visible:ring-chrono-primary ${
                   isActive
                     ? "bg-chrono-primary/10 text-chrono-text"
                     : "text-chrono-text-muted hover:bg-chrono-surface-light hover:text-chrono-text"
@@ -58,23 +131,48 @@ export default function Sidebar() {
                   <p className="line-clamp-2 text-xs leading-relaxed">
                     {conv.title}
                   </p>
-                  <p className="mt-0.5 text-[10px] text-chrono-text-dim">
-                    {conv.updatedAt}
+                  <p
+                    className="mt-0.5 text-[10px] text-chrono-text-dim"
+                    suppressHydrationWarning
+                  >
+                    {timeAgo(conv.updatedAt)}
                   </p>
                 </div>
-              </button>
+                {conversations.length > 1 && (
+                  <button
+                    type="button"
+                    aria-label={`Delete conversation ${conv.title}`}
+                    onClick={(e) => {
+                      e.stopPropagation();
+                      removeConversation(conv.id);
+                    }}
+                    className="flex h-5 w-5 flex-shrink-0 items-center justify-center rounded text-chrono-text-dim opacity-0 transition-all group-hover:opacity-100 hover:bg-red-500/10 hover:text-red-400"
+                  >
+                    <Trash2 className="h-3 w-3" />
+                  </button>
+                )}
+              </div>
             );
           })}
         </div>
 
-        <button className="mt-2 w-full py-2 text-xs font-medium text-chrono-cyan transition-colors hover:text-cyan-300">
-          View all conversations →
-        </button>
-
         {/* Data Sources */}
-        <h3 className="mb-2 mt-5 text-[11px] font-semibold uppercase tracking-wider text-chrono-text-dim">
-          Data Sources
-        </h3>
+        <div className="mb-2 mt-5 flex items-center justify-between pr-1">
+          <h3 className="text-[11px] font-semibold uppercase tracking-wider text-chrono-text-dim">
+            Data Sources
+          </h3>
+          <button
+            onClick={forceSync}
+            disabled={syncing}
+            className="rounded-md p-1 text-chrono-text-muted transition-colors hover:bg-chrono-surface-light hover:text-chrono-text disabled:opacity-50"
+            aria-label="Force sync data sources"
+            title="Force sync"
+          >
+            <RefreshCw
+              className={`h-3 w-3 ${syncing ? "animate-spin text-chrono-primary" : ""}`}
+            />
+          </button>
+        </div>
         <div className="space-y-1">
           {dataSources.map((source) => {
             const Icon = source.icon;
@@ -88,8 +186,9 @@ export default function Sidebar() {
                   style={{ color: source.color }}
                 />
                 <span className="flex-1 text-xs font-medium">{source.name}</span>
-                <span className="text-[10px] text-chrono-text-dim">Connected</span>
-                <span className="h-1.5 w-1.5 rounded-full bg-chrono-green shadow-sm shadow-chrono-green/50" />
+                <span className="text-xs text-chrono-text-dim">
+                  {formatSync(syncedMinutesAgo[source.id] ?? 0)}
+                </span>
               </div>
             );
           })}
@@ -97,20 +196,36 @@ export default function Sidebar() {
       </div>
 
       {/* User Profile */}
+      <SidebarFooter />
+    </aside>
+  );
+}
+
+function SidebarFooter() {
+  const [settingsOpen, setSettingsOpen] = useState(false);
+  return (
+    <>
       <div className="border-t border-chrono-border p-3">
-        <div className="flex items-center gap-2.5 rounded-lg px-2 py-2 transition-colors hover:bg-chrono-surface-light">
-          <div className="flex h-7 w-7 items-center justify-center rounded-full bg-gradient-to-br from-cyan-400 to-blue-600 text-[11px] font-bold text-white shadow-sm">
+        <div className="flex items-center gap-2.5 rounded-lg px-2 py-2">
+          <div className="flex h-7 w-7 items-center justify-center rounded-full bg-gradient-to-br from-indigo-500 to-indigo-700 text-[11px] font-bold text-white shadow-sm">
             AS
           </div>
           <div className="flex-1">
             <p className="text-xs font-medium text-chrono-text">Alex Stevens</p>
-            <p className="text-[10px] text-chrono-text-dim">View Profile</p>
+            <p className="text-[10px] text-chrono-text-dim">
+              Senior Security Engineer
+            </p>
           </div>
-          <button className="rounded-md p-1 text-chrono-text-muted transition-colors hover:bg-chrono-surface hover:text-chrono-text">
+          <button
+            onClick={() => setSettingsOpen(true)}
+            className="rounded-md p-1 text-chrono-text-muted transition-colors hover:bg-chrono-surface hover:text-chrono-text"
+            aria-label="Open settings"
+          >
             <Settings className="h-3.5 w-3.5" />
           </button>
         </div>
       </div>
-    </aside>
+      <SettingsModal open={settingsOpen} onClose={() => setSettingsOpen(false)} />
+    </>
   );
 }
