@@ -210,28 +210,20 @@ export default function MessageBubble({ message }: MessageBubbleProps) {
         {/* Inline citation pills — hover highlights the matching node/event in the right pane */}
         {showPills && (
           <div className="mt-2 flex flex-wrap gap-1.5">
-            {message.sources!.slice(0, 6).map((source) => {
-              // File sources have no node/event to highlight — skip cross-pane.
-              const canHighlight = source.platform !== "file";
-              return (
-                <button
-                  key={source.id}
-                  onMouseEnter={() => canHighlight && setHighlight(source.id)}
-                  onMouseLeave={() => setHighlight(null)}
-                  onFocus={() => canHighlight && setHighlight(source.id)}
-                  onBlur={() => setHighlight(null)}
-                  onClick={() => setSourcesOpen(true)}
-                  className="rounded-md border border-chrono-border bg-chrono-surface-light px-2 py-0.5 text-[10px] font-medium text-chrono-text-muted transition-all duration-150 hover:border-chrono-primary/60 hover:text-chrono-text hover:shadow-[0_0_8px_rgba(99,102,241,0.35)]"
-                  title={
-                    canHighlight
-                      ? `Highlight in graph & timeline (${source.id})`
-                      : "Attached document"
-                  }
-                >
-                  [{citationLabel(source)}]
-                </button>
-              );
-            })}
+            {message.sources!.slice(0, 6).map((source) => (
+              <button
+                key={source.id}
+                onMouseEnter={() => setHighlight(source.id)}
+                onMouseLeave={() => setHighlight(null)}
+                onFocus={() => setHighlight(source.id)}
+                onBlur={() => setHighlight(null)}
+                onClick={() => setSourcesOpen(true)}
+                className="rounded-md border border-chrono-border bg-chrono-surface-light px-2 py-0.5 text-[10px] font-medium text-chrono-text-muted transition-all duration-150 hover:border-chrono-primary/60 hover:text-chrono-text hover:shadow-[0_0_8px_rgba(99,102,241,0.35)]"
+                title={`Highlight in graph & timeline (${source.id})`}
+              >
+                [{citationLabel(source)}]
+              </button>
+            ))}
           </div>
         )}
 

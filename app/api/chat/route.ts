@@ -9,7 +9,7 @@ import { isSafeReadOnlyCypher, validateCypherStructure } from "@/lib/cypherSafet
 
 // ── Config ──────────────────────────────────────────────────────────────────
 
-const GROQ_MODEL = "llama-3.1-8b-instant";
+const GROQ_MODEL = "openai/gpt-oss-120b";
 // Cap on result rows sent to the narrative LLM per request (context-window safety).
 const MAX_CONTEXT_RECORDS = 40;
 // Cap on source cards returned to the UI.
@@ -379,6 +379,7 @@ async function handleAttachment(
     {
       model: GROQ_MODEL,
       temperature: 0.3,
+      max_completion_tokens: 4096,
       messages: [
         { role: "system", content: systemPrompt },
         { role: "user", content: userPrompt },
@@ -466,6 +467,8 @@ ${context}`;
     {
       model: GROQ_MODEL,
       temperature: 0.3,
+      max_completion_tokens: 4096,
+      reasoning_format: "hidden",
       response_format: { type: "json_object" },
       messages: [
         { role: "system", content: systemPrompt },

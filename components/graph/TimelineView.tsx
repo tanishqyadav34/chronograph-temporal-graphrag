@@ -1,8 +1,8 @@
 "use client";
 
-import { mockTimelineEvents } from "@/lib/mockGraph";
 import { Slack, Github, Ticket } from "lucide-react";
 import { useHighlight } from "@/lib/highlight-context";
+import { useGraphData } from "@/lib/graph-data-context";
 
 const refIcons: Record<string, React.ElementType> = {
   slack: Slack,
@@ -18,6 +18,7 @@ const refColors: Record<string, string> = {
 
 export default function TimelineView() {
   const { highlight, setHighlight } = useHighlight();
+  const { timelineEvents } = useGraphData();
 
   return (
     <div className="h-full overflow-y-auto scrollbar-thin px-4 py-4">
@@ -26,7 +27,12 @@ export default function TimelineView() {
         <div className="absolute left-[68px] top-2 h-[calc(100%-16px)] w-px bg-gradient-to-b from-chrono-primary/40 via-chrono-violet/20 to-transparent" />
 
         <div className="space-y-0">
-          {mockTimelineEvents.map((event) => {
+          {timelineEvents.length === 0 && (
+            <p className="px-4 py-6 text-xs text-chrono-text-dim">
+              No timeline events found in this dataset.
+            </p>
+          )}
+          {timelineEvents.map((event) => {
             const Icon = refIcons[event.referenceType];
             const color = refColors[event.referenceType];
             const isHighlighted =

@@ -9,7 +9,7 @@ import {
   Crosshair,
   SlidersHorizontal,
 } from "lucide-react";
-import { mockGraphData } from "@/lib/mockGraph";
+import { useGraphData } from "@/lib/graph-data-context";
 import { useHighlight } from "@/lib/highlight-context";
 
 // react-force-graph-2d touches `window` at module scope, so it must be
@@ -56,8 +56,12 @@ export default function GraphView() {
     ticket: true,
   });
   const didInitialFit = useRef(false);
+  const { graphData } = useGraphData();
   const { highlight } = useHighlight();
   const citationSourceId = highlight.sourceId;
+  // A "file:*" citation means the whole graph was adapted from that file.
+  const isFileCitation =
+    typeof citationSourceId === "string" && citationSourceId.startsWith("file:");
 
   // Client-only lazy load of the force-graph component (ref-forwarding).
   useEffect(() => {
@@ -74,11 +78,22 @@ export default function GraphView() {
     };
   }, []);
 
+  // When the graph data changes (a file was attached / removed / replaced),
+  // clear the stale selection and re-fit the new layout.
+  const lastDataRef = useRef(graphData);
+  useEffect(() => {
+    if (lastDataRef.current !== graphData) {
+      lastDataRef.current = graphData;
+      didInitialFit.current = false;
+      setSelectedId(null);
+    }
+  }, [graphData]);
+
   // Adjacency map (nodeId → connected nodeIds) computed once so the color/val
   // callbacks are O(1) instead of scanning all links per node per frame.
   const adjacency = useMemo(() => {
     const map = new Map<string, Set<string>>();
-    for (const link of mockGraphData.links as any[]) {
+    for (const link of graphData.links as any[]) {
       const { src, tgt } = linkEndpoints(link);
       if (!src || !tgt) continue;
       if (!map.has(src)) map.set(src, new Set());
@@ -87,7 +102,7 @@ export default function GraphView() {
       map.get(tgt)!.add(src);
     }
     return map;
-  }, []);
+  }, [graphData]);
 
   const isConnected = useCallback(
     (nodeId: string) => adjacency.get(selectedId ?? "")?.has(nodeId) ?? false,
@@ -98,7 +113,12 @@ export default function GraphView() {
   const citationNodes = useMemo(() => {
     const set = new Set<string>();
     if (!citationSourceId) return set;
-    for (const link of mockGraphData.links as any[]) {
+    // A file citation implicates the whole adapted graph.
+    if (isFileCitation) {
+      for (const node of graphData.nodes) set.add(node.id);
+      return set;
+    }
+    for (const link of graphData.links as any[]) {
       if (link.sourceId === citationSourceId) {
         const { src, tgt } = linkEndpoints(link);
         if (src) set.add(src);
@@ -106,24 +126,24 @@ export default function GraphView() {
       }
     }
     return set;
-  }, [citationSourceId]);
+  }, [citationSourceId, isFileCitation, graphData]);
 
   // Filtered graph data — only show enabled node types (and links between
   // them). Objects are cloned so react-force-graph's in-place mutation never
   // contaminates the shared mockGraphData across filter toggles / remounts.
   const filteredData = useMemo(() => {
-    const nodes = mockGraphData.nodes
+    const nodes = graphData.nodes
       .filter((n: any) => visibleTypes[n.type as NodeType] !== false)
       .map((n: any) => ({ ...n }));
     const nodeIds = new Set(nodes.map((n: any) => n.id));
-    const links = (mockGraphData.links as any[])
+    const links = (graphData.links as any[])
       .filter((l) => {
         const { src, tgt } = linkEndpoints(l);
         return src !== null && tgt !== null && nodeIds.has(src) && nodeIds.has(tgt);
       })
       .map((l: any) => ({ ...l }));
     return { nodes, links };
-  }, [visibleTypes]);
+  }, [visibleTypes, graphData]);
 
   // ResizeObserver to track container dimensions
   useEffect(() => {
@@ -282,7 +302,7 @@ export default function GraphView() {
                   : "rgba(148, 163, 184, 0.12)";
               }
               if (citationSourceId) {
-                return link.sourceId === citationSourceId
+                return isFileCitation || link.sourceId === citationSourceId
                   ? "#14b8a6"
                   : "rgba(148, 163, 184, 0.12)";
               }
@@ -294,7 +314,7 @@ export default function GraphView() {
                 return src === selectedId || tgt === selectedId ? 2 : 0.5;
               }
               if (citationSourceId) {
-                return link.sourceId === citationSourceId ? 2 : 0.5;
+                return isFileCitation || link.sourceId === citationSourceId ? 2 : 0.5;
               }
               return 1;
             }}
@@ -304,7 +324,7 @@ export default function GraphView() {
                 return src === selectedId || tgt === selectedId ? 2 : 0;
               }
               if (citationSourceId) {
-                return link.sourceId === citationSourceId ? 2 : 0;
+                return isFileCitation || link.sourceId === citationSourceId ? 2 : 0;
               }
               return 1;
             }}
@@ -315,7 +335,7 @@ export default function GraphView() {
                 return src === selectedId || tgt === selectedId ? "#fbbf24" : "#6366f1";
               }
               if (citationSourceId) {
-                return link.sourceId === citationSourceId ? "#14b8a6" : "#6366f1";
+                return isFileCitation || link.sourceId === citationSourceId ? "#14b8a6" : "#6366f1";
               }
               return "#6366f1";
             }}
