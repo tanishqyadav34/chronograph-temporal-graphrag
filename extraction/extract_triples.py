@@ -33,7 +33,7 @@ TRIPLES_OUTPUT = OUTPUT_DIR / "extracted_triples.json"
 REVIEW_OUTPUT = OUTPUT_DIR / "test_review.md"
 
 # Groq API settings (OpenAI-compatible)
-GROQ_MODEL = "llama-3.1-8b-instant"
+GROQ_MODEL = "openai/gpt-oss-120b"
 
 # Restrict to these relation labels exactly
 VALID_RELATIONS = [
@@ -150,6 +150,8 @@ def call_api_with_retry(client: OpenAI, messages: list[dict], label: str) -> str
                 model=GROQ_MODEL,
                 messages=messages,
                 response_format={"type": "json_object"},
+                reasoning_format="hidden",
+                max_completion_tokens=4096,
                 temperature=0.0,
             )
 

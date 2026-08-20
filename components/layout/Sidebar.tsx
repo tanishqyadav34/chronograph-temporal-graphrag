@@ -10,8 +10,10 @@ import {
   MessageSquare,
   Trash2,
   RefreshCw,
+  Paperclip,
 } from "lucide-react";
 import { useChat } from "@/lib/chat-context";
+import { useSession } from "next-auth/react";
 import SettingsModal from "./SettingsModal";
 
 interface SidebarProps {
@@ -127,6 +129,12 @@ export default function Sidebar({ onNewConversation }: SidebarProps) {
                   <span className="absolute left-0 top-1/2 h-5 w-0.5 -translate-y-1/2 rounded-full bg-chrono-primary" />
                 )}
                 <MessageSquare className="mt-0.5 h-3.5 w-3.5 flex-shrink-0 opacity-60" />
+                {conv.attachment && (
+                  <Paperclip
+                    className="mt-1 h-3 w-3 flex-shrink-0 text-chrono-cyan"
+                    aria-label="Has attached file"
+                  />
+                )}
                 <div className="min-w-0 flex-1">
                   <p className="line-clamp-2 text-xs leading-relaxed">
                     {conv.title}
@@ -203,18 +211,29 @@ export default function Sidebar({ onNewConversation }: SidebarProps) {
 
 function SidebarFooter() {
   const [settingsOpen, setSettingsOpen] = useState(false);
+  const { data: session } = useSession();
+  const user = session?.user;
+  const name = user?.name || "Analyst";
+  const role = user?.role || "";
+  const initials =
+    name
+      .split(/\s+/)
+      .map((w) => w[0])
+      .filter(Boolean)
+      .slice(0, 2)
+      .join("")
+      .toUpperCase() || "U";
+
   return (
     <>
       <div className="border-t border-chrono-border p-3">
         <div className="flex items-center gap-2.5 rounded-lg px-2 py-2">
           <div className="flex h-7 w-7 items-center justify-center rounded-full bg-gradient-to-br from-indigo-500 to-indigo-700 text-[11px] font-bold text-white shadow-sm">
-            AS
+            {initials}
           </div>
           <div className="flex-1">
-            <p className="text-xs font-medium text-chrono-text">Alex Stevens</p>
-            <p className="text-[10px] text-chrono-text-dim">
-              Senior Security Engineer
-            </p>
+            <p className="truncate text-xs font-medium text-chrono-text">{name}</p>
+            <p className="truncate text-[10px] text-chrono-text-dim">{role}</p>
           </div>
           <button
             onClick={() => setSettingsOpen(true)}

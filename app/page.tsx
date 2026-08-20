@@ -7,6 +7,7 @@ import ChatWindow from "@/components/chat/ChatWindow";
 import GraphPanel from "@/components/graph/GraphPanel";
 import { ChatProvider, useChat } from "@/lib/chat-context";
 import { HighlightProvider } from "@/lib/highlight-context";
+import { GraphDataProvider } from "@/lib/graph-data-context";
 
 function AppShell() {
   const [sidebarOpen, setSidebarOpen] = useState(false);
@@ -118,9 +119,11 @@ function AppShell() {
 export default function Home() {
   return (
     <ChatProvider>
-      <HighlightProvider>
-        <AppShell />
-      </HighlightProvider>
+      <GraphDataProvider>
+        <HighlightProvider>
+          <AppShell />
+        </HighlightProvider>
+      </GraphDataProvider>
     </ChatProvider>
   );
 }

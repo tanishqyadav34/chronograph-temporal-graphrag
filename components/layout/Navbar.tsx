@@ -12,6 +12,7 @@ import {
   PanelRightOpen,
 } from "lucide-react";
 import { useTheme } from "@/lib/theme-context";
+import { useSession } from "next-auth/react";
 import SettingsModal from "./SettingsModal";
 
 interface NavbarProps {
@@ -31,6 +32,16 @@ export default function Navbar({
 }: NavbarProps) {
   const { theme, toggleTheme } = useTheme();
   const darkMode = theme === "dark";
+  const { data: session } = useSession();
+  const user = session?.user;
+  const avatarInitials =
+    (user?.name || "U")
+      .split(/\s+/)
+      .map((w) => w[0])
+      .filter(Boolean)
+      .slice(0, 2)
+      .join("")
+      .toUpperCase() || "U";
   const [repoDropdownOpen, setRepoDropdownOpen] = useState(false);
   const [selectedRepo, setSelectedRepo] = useState("All Repositories");
   const [settingsOpen, setSettingsOpen] = useState(false);
@@ -159,9 +170,9 @@ export default function Navbar({
           onClick={() => setSettingsOpen(true)}
           className="flex h-7 w-7 items-center justify-center rounded-full bg-gradient-to-br from-indigo-500 to-indigo-700 text-[11px] font-bold text-white shadow-sm transition-transform hover:scale-105 active:scale-95"
           aria-label="Open settings"
-          title="Settings"
+          title={user ? `${user.name} — settings` : "Settings"}
         >
-          AS
+          {avatarInitials}
         </button>
       </div>
 

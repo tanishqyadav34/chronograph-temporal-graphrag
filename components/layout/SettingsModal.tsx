@@ -1,8 +1,9 @@
 "use client";
 
 import { useState } from "react";
-import { X, Moon, Sun, User as UserIcon, Mail } from "lucide-react";
+import { X, Moon, Sun, User as UserIcon, Mail, LogOut } from "lucide-react";
 import { useTheme } from "@/lib/theme-context";
+import { useSession, signOut } from "next-auth/react";
 
 interface SettingsModalProps {
   open: boolean;
@@ -35,6 +36,19 @@ const ROWS: { key: keyof ToggleState; label: string; desc: string }[] = [
 
 export default function SettingsModal({ open, onClose }: SettingsModalProps) {
   const { theme, toggleTheme } = useTheme();
+  const { data: session } = useSession();
+  const user = session?.user;
+  const name = user?.name || "Analyst";
+  const role = user?.role || "";
+  const email = user?.email || "";
+  const initials =
+    name
+      .split(/\s+/)
+      .map((w) => w[0])
+      .filter(Boolean)
+      .slice(0, 2)
+      .join("")
+      .toUpperCase() || "U";
   const [toggles, setToggles] = useState<ToggleState>({
     slack: true,
     github: true,
@@ -67,18 +81,14 @@ export default function SettingsModal({ open, onClose }: SettingsModalProps) {
         {/* User info */}
         <div className="mt-4 flex items-center gap-3 rounded-xl border border-chrono-border bg-chrono-surface-light/60 p-3">
           <div className="flex h-10 w-10 flex-shrink-0 items-center justify-center rounded-full bg-gradient-to-br from-indigo-500 to-indigo-700 text-xs font-bold text-white shadow-sm">
-            AS
+            {initials}
           </div>
           <div className="min-w-0 flex-1">
-            <p className="text-sm font-semibold text-chrono-text">
-              Alex Stevens
-            </p>
-            <p className="text-[11px] text-chrono-text-muted">
-              Senior Security Engineer
-            </p>
-            <p className="mt-0.5 flex items-center gap-1 text-[10px] text-chrono-text-dim">
-              <Mail className="h-3 w-3" />
-              alex.stevens@chronograph.dev
+            <p className="truncate text-sm font-semibold text-chrono-text">{name}</p>
+            <p className="truncate text-[11px] text-chrono-text-muted">{role}</p>
+            <p className="mt-0.5 flex items-center gap-1 truncate text-[10px] text-chrono-text-dim">
+              <Mail className="h-3 w-3 flex-shrink-0" />
+              <span className="truncate">{email}</span>
             </p>
           </div>
         </div>
@@ -150,9 +160,20 @@ export default function SettingsModal({ open, onClose }: SettingsModalProps) {
           ))}
         </div>
 
+        {/* Log out */}
+        <button
+          onClick={() =>
+            signOut({ callbackUrl: "/login" }).then(() => onClose())
+          }
+          className="mt-4 flex w-full items-center justify-center gap-1.5 rounded-lg border border-red-500/30 bg-red-500/10 py-2 text-xs font-semibold text-red-400 transition-all duration-200 hover:bg-red-500/20 active:scale-[0.98]"
+        >
+          <LogOut className="h-3.5 w-3.5" />
+          Log out
+        </button>
+
         <button
           onClick={onClose}
-          className="mt-5 flex w-full items-center justify-center gap-1.5 rounded-lg bg-gradient-to-r from-chrono-primary to-chrono-violet py-2 text-xs font-semibold text-white shadow-lg shadow-chrono-primary/20 transition-all duration-200 hover:brightness-110 active:scale-[0.98]"
+          className="mt-2 flex w-full items-center justify-center gap-1.5 rounded-lg bg-gradient-to-r from-chrono-primary to-chrono-violet py-2 text-xs font-semibold text-white shadow-lg shadow-chrono-primary/20 transition-all duration-200 hover:brightness-110 active:scale-[0.98]"
         >
           <UserIcon className="h-3.5 w-3.5" />
           Done

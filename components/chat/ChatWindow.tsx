@@ -84,8 +84,14 @@ export default function ChatWindow() {
         </div>
       </div>
 
-      {/* Input */}
-      <ChatInput onSend={sendMessage} onStop={stopGeneration} disabled={pending} />
+      {/* Input — keyed by conversation so drafts/attachments never leak
+          across conversations and remount cleanly on switch */}
+      <ChatInput
+        key={activeConversation.id}
+        onSend={sendMessage}
+        onStop={stopGeneration}
+        disabled={pending}
+      />
     </div>
   );
 }
