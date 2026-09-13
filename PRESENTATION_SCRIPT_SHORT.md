@@ -67,7 +67,7 @@
 
 ## 4. Live Demo (~3 min)
 
-**[DO]** Open `http://localhost:3000` → login: `alex.stevens@chronograph.dev` / `demo1234`.
+**[DO]** Open `http://localhost:3000` → login: `alex.stevens@chronograph.dev` / password from `DEMO_USER_PASSWORD`.
 
 **[SAY]**
 > "Let me show you the three things that matter most."
@@ -104,7 +104,7 @@
 
 ### Demo 4 — Multi-user (10s)
 
-**[DO]** Point at the sidebar; (if time) log out → log in as `priya.sharma@meridian.io` / `demo1234`.
+**[DO]** Point at the sidebar; (if time) log out → log in as `priya.sharma@meridian.io` → show their separate, empty history.
 
 **[SAY]**
 > "Auth is real — bcrypt-hashed accounts, login and signup — and every user sees **only their

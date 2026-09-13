@@ -75,7 +75,9 @@ python data/generate_mock_dataset.py        # regenerate dataset
 python extraction/extract_triples.py --all  # re-extract triples
 python ingestion/ingest_to_neo4j.py         # load graph into Neo4j
 
-# 3. Seed demo accounts (alex.stevens@chronograph.dev / priya.sharma@meridian.io, pw demo1234)
+# 3. Seed demo accounts (alex.stevens@chronograph.dev / priya.sharma@meridian.io)
+#    Password comes from DEMO_USER_PASSWORD (a random one is generated and
+#    logged once if unset — nothing is hardcoded).
 npm run seed:users
 
 # 4. Run
@@ -84,17 +86,66 @@ npm run dev        # http://localhost:3000 → redirected to /login
 npm run build      # production build check
 ```
 
+### One-command startup with Docker
+
+Bring up the app plus Neo4j (no external database or accounts needed):
+
+```bash
+docker compose up --build
+```
+
+- App: <http://localhost:3000>
+- Neo4j browser UI: <http://localhost:7474> (`neo4j` / `devpassword` — dev only)
+- Pass `GROK_API_KEY` via `.env` to enable the LLM pipeline; the app boots without it.
+
+## Testing & CI
+
+Both stacks ship real automated test suites, run by GitHub Actions (`.github/workflows/ci.yml`) on every push and PR: lint, typecheck, Jest, pytest, and a Docker build smoke test.
+
+```bash
+# TypeScript / React (Jest + React Testing Library, two projects: node + jsdom)
+npm install
+npm test           # all suites
+npm run lint       # ESLint
+npx tsc --noEmit   # typecheck
+
+# Python (pytest — extraction + ingestion, fully offline)
+python -m venv .venv
+.venv/Scripts/pip install -r requirements-dev.txt   # Windows
+#  source .venv/bin/activate && pip install -r requirements-dev.txt  # macOS/Linux
+.venv/Scripts/python -m pytest                      # 35+ tests, no Neo4j needed
+
+# Optional: live Neo4j integration tests (explicit opt-in)
+CHRONO_LIVE_NEO4J=1 .venv/Scripts/python -m pytest ingestion/
+```
+
+Test layout:
+
+```
+__tests__/lib/*.test.ts          cypherSafety, textToCypher (mocked fetch),
+                                 neo4jResultUtils, graphResults, logger
+__tests__/components/            React component tests (jsdom + RTL)
+extraction/test_*.py             triple extraction: batch parsing, validation rules
+ingestion/test_*.py              node classification, connection smoke tests
+```
+
+Live Neo4j tests in `ingestion/` are **skipped by default** (no external infra required) and only run when `CHRONO_LIVE_NEO4J=1` plus real credentials are set.
+
+Dependency updates are automated via Dependabot (`.github/dependabot.yml`: npm, pip, GitHub Actions).
+
 ## Repository Layout
 
 ```
 app/            Next.js pages + API routes (chat, signup)
 components/     UI: chat, graph/timeline panels, layout (sidebar/navbar)
-lib/            Core logic: chat-context, graph-data-context, parseDataset,
-                neo4j, textToCypher, cypherSafety, highlight-context, mock data
-scripts/        seed_users.mjs — demo account seeder
-extraction/     Python: triple extraction from the dataset (Groq)
-ingestion/      Python: load triples into Neo4j
+lib/            Core logic: cypherSafety, textToCypher, neo4j, chat-context,
+                graphResults, datasetRecords, neo4jResultUtils, attachments,
+                narrative, logger, parseDataset, mock data
+scripts/        seed_users.mjs — demo account seeder (env-configurable password)
+extraction/     Python: triple extraction from the dataset (Groq) + pytest suite
+ingestion/      Python: load triples into Neo4j + pytest suite
 data/           Dataset generator + mock_dataset.json
+__tests__/      Jest suites (lib units + React components)
 ```
 
 > See `PRESENTATION_SCRIPT.md` for a full demo walkthrough and Q&A prep.

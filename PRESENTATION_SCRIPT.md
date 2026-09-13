@@ -205,7 +205,7 @@
 
 **[SAY]**
 > "Every route is protected — let's log in with a seeded account."
-> Email: `alex.stevens@chronograph.dev` · Password: `demo1234`
+> Email: `alex.stevens@chronograph.dev` · Password: from `DEMO_USER_PASSWORD` (set when seeding)
 
 **[DO]** Log in, land on the chat home.
 
@@ -282,7 +282,7 @@
 > "New conversations are real: they appear in the sidebar and I can click back into any of
 > them. And these conversations are scoped to *my* account."
 
-**[DO]** (Optional, if time) Log out → log in as `priya.sharma@meridian.io` / `demo1234` → show their separate, empty history.
+**[DO]** (Optional, if time) Log out → log in as `priya.sharma@meridian.io` (seeded password) → show their separate, empty history.
 
 ### Demo 6 — Signup (optional)
 
@@ -315,7 +315,7 @@
 ```bash
 npm run dev              # dev server
 npm run build            # production build
-npm run seed:users       # seed demo accounts (alex.stevens@… / priya.sharma@…, pw demo1234)
+npm run seed:users       # seed demo accounts; password comes from DEMO_USER_PASSWORD (random + logged if unset)
 python data/generate_mock_dataset.py      # regenerate dataset
 python extraction/extract_triples.py --all  # re-extract triples
 python ingestion/ingest_to_neo4j.py        # load graph into Neo4j
