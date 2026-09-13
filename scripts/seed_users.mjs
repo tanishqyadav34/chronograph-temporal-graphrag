@@ -9,11 +9,16 @@
 
 import neo4j from "neo4j-driver";
 import { hash } from "bcryptjs";
+import { randomBytes } from "crypto";
 
 const uri = process.env.NEO4J_URI ?? "bolt://localhost:7687";
 const user = process.env.NEO4J_USER ?? "neo4j";
 const password = process.env.NEO4J_PASSWORD;
 const database = process.env.NEO4J_DATABASE ?? "neo4j";
+
+// Password for the seeded demo accounts. Set DEMO_USER_PASSWORD to control it;
+// otherwise a random password is generated per run and printed once below.
+const demoPassword = process.env.DEMO_USER_PASSWORD ?? randomBytes(12).toString("hex");
 
 if (!password) {
   console.error(
@@ -22,21 +27,26 @@ if (!password) {
   process.exit(1);
 }
 
-// ── Demo accounts (change freely) ───────────────────────────────────────────
+// ── Demo accounts (passwords set via demoPassword above) ──────────────────
 const USERS = [
   {
     email: "alex.stevens@chronograph.dev",
-    password: "demo1234",
     name: "Alex Stevens",
     role: "Senior Security Engineer",
   },
   {
     email: "priya.sharma@meridian.io",
-    password: "demo1234",
     name: "Priya Sharma",
     role: "Cloud Strategy Lead",
   },
 ];
+
+if (!process.env.DEMO_USER_PASSWORD) {
+  console.log(
+    "DEMO_USER_PASSWORD not set — generated a random password for the demo accounts: " +
+      demoPassword
+  );
+}
 
 const driver = neo4j.driver(uri, neo4j.auth.basic(user, password));
 const session = driver.session({ database });
@@ -46,7 +56,7 @@ try {
   console.log(`Connected to Neo4j at ${uri} (database: ${database})`);
 
   for (const u of USERS) {
-    const passwordHash = await hash(u.password, 10);
+    const passwordHash = await hash(demoPassword, 10);
     const result = await session.run(
       `MERGE (user:User {email: $email})
        SET user.name = $name, user.role = $role, user.passwordHash = $hash
@@ -56,7 +66,7 @@ try {
     const row = result.records[0]?.toObject() ?? {};
     console.log(
       `✔ upserted ${row.email} (${row.name}, ${row.role})` +
-        ` — password: ${u.password}`
+        (process.env.DEMO_USER_PASSWORD ? " — password: DEMO_USER_PASSWORD" : " — password: (random, printed above)")
     );
   }
 } catch (err) {
