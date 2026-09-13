@@ -1,0 +1,3 @@
+# ChronoGraph Python dev dependencies (test tooling)
+-r requirements.txt
+pytest>=8.0

@@ -7,6 +7,7 @@ export const metadata: Metadata = {
   title: "ChronoGraph — Intelligent Forensics Assistant",
   description:
     "An intelligent forensics chat assistant for security incident analysis and investigation.",
+  icons: { icon: "/favicon.svg" },
 };
 
 export default function RootLayout({

@@ -14,7 +14,8 @@ dist/
 downloads/
 eggs/
 .eggs/
-lib/
+# NOTE: a bare `lib/` was removed here — it silently excluded the project's
+# core TypeScript lib/ directory from git. Python-specific ignores live above.
 lib64/
 parts/
 sdist/
@@ -221,3 +222,4 @@ __marimo__/
  
 node_modules
 .next/
+tsconfig.tsbuildinfo
