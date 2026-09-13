@@ -1,81 +1,66 @@
-#!/usr/bin/env python3
-"""Minimal Neo4j AuraDB connection test with credential & env debugging."""
+"""Integration tests for the live Neo4j connection.
+
+Previously a manual debug script (prints + no assertions). Now a pytest
+module with real assertions. Live-connection tests are skipped unless
+NEO4J_URI and NEO4J_PASSWORD are set (via .env or the environment), so the
+suite still runs fully offline in CI.
+"""
 
 import os
-import sys
+from pathlib import Path
 
-# ── 1. Check .env for UTF-8 BOM ──────────────────────────────────────────────
-dotenv_path = os.path.join(os.path.dirname(os.path.abspath(__file__)), "..", ".env")
-dotenv_path = os.path.normpath(dotenv_path)
-print(f"[BOM CHECK] Reading first 10 bytes of: {dotenv_path}")
-try:
-    with open(dotenv_path, "rb") as f:
-        first_10 = f.read(10)
-    print(f"[BOM CHECK] Raw bytes (hex): {first_10.hex()}")
-    print(f"[BOM CHECK] Raw bytes (repr): {first_10!r}")
-    if first_10[:3] == b"\xef\xbb\xbf":
-        print("[BOM CHECK] => WARNING: UTF-8 BOM detected! This can cause issues.")
-    else:
-        print("[BOM CHECK] => No BOM detected. File starts clean.")
-except FileNotFoundError:
-    print(f"[BOM CHECK] => .env not found at {dotenv_path}")
-    dotenv_path = ".env"
-    print(f"[BOM CHECK] Trying cwd: {os.path.abspath(dotenv_path)}")
-    try:
-        with open(dotenv_path, "rb") as f:
-            first_10 = f.read(10)
-        print(f"[BOM CHECK] Raw bytes (hex): {first_10.hex()}")
-        print(f"[BOM CHECK] Raw bytes (repr): {first_10!r}")
-    except FileNotFoundError:
-        print("[BOM CHECK] => .env not found in cwd either.")
-
-# ── 2. Load .env ─────────────────────────────────────────────────────────────
+import pytest
 from dotenv import load_dotenv
-loaded_path = load_dotenv(dotenv_path, override=True)
-print(f"\n[LOAD_DOTENV] Called with path: {dotenv_path}")
-print(f"[LOAD_DOTENV] Returned: {loaded_path}")
 
-for k in ["NEO4J_URI", "NEO4J_USER", "NEO4J_PASSWORD"]:
-    v = os.getenv(k)
-    if v:
-        print(f"[LOAD_DOTENV] {k} is now set (len={len(v)})")
-    else:
-        print(f"[LOAD_DOTENV] {k} is NOT SET")
+ROOT = Path(__file__).resolve().parent.parent
 
-# ── 3. Credential debug (safe) ──────────────────────────────────────────────
-uri = os.getenv("NEO4J_URI", "")
-user = os.getenv("NEO4J_USER", "")
-pw = os.getenv("NEO4J_PASSWORD", "")
+load_dotenv(ROOT / ".env", override=True)
 
-print(f"\n[CREDENTIALS]")
-print(f"  NEO4J_URI (repr):     {uri!r}")
-print(f"  NEO4J_USER (repr):    {user!r}")
-print(f"  NEO4J_USER len:       {len(user)}")
-print(f"  NEO4J_PASSWORD len:   {len(pw)}")
-if len(pw) >= 6:
-    print(f"  NEO4J_PASSWORD first3: '{pw[:3]}'")
-    print(f"  NEO4J_PASSWORD last3:  '{pw[-3:]}'")
-else:
-    print(f"  NEO4J_PASSWORD value: '{pw}' (very short)")
+URI = os.getenv("NEO4J_URI", "")
+USER = os.getenv("NEO4J_USER", "neo4j")
+PASSWORD = os.getenv("NEO4J_PASSWORD", "")
 
-# ── 4. Attempt connection ───────────────────────────────────────────────────
-# Use neo4j+ssc:// (encrypted, trusts self-signed certs) instead of
-# neo4j+s:// (encrypted, strict cert verification). This preserves
-# TLS encryption while skipping certificate chain validation.
-from neo4j import GraphDatabase
+# Live tests are explicit opt-in (CHRONO_LIVE_NEO4J=1) AND require creds, so a
+# default `pytest` run is deterministic and never depends on external infra.
+LIVE_NEO4J = os.getenv("CHRONO_LIVE_NEO4J", "") == "1"
 
-ssc_uri = uri.replace("neo4j+s://", "neo4j+ssc://")
-if ssc_uri == uri:
-    # try bolt variants too
-    ssc_uri = uri.replace("bolt+s://", "bolt+ssc://")
-print(f"\n[CONNECT] Using URI: {ssc_uri}")
+requires_neo4j = pytest.mark.skipif(
+    not (LIVE_NEO4J and URI and PASSWORD),
+    reason="set CHRONO_LIVE_NEO4J=1 plus NEO4J_URI/NEO4J_PASSWORD to run live Neo4j tests",
+)
 
-try:
-    driver = GraphDatabase.driver(ssc_uri, auth=(user, pw))
-    driver.verify_connectivity()
-    print("[CONNECT] => SUCCESS! Connected to Neo4j.")
-    driver.close()
-except Exception as e:
-    print(f"[CONNECT] => FAILED: {type(e).__name__}: {e}")
 
-print("\n[DONE]")
+def test_env_vars_present_or_skipped():
+    """Report clearly what is missing instead of failing on a fresh clone."""
+    if not (URI and PASSWORD):
+        pytest.skip("NEO4J_URI / NEO4J_PASSWORD not set (offline run)")
+    assert URI.startswith(("bolt", "neo4j")), f"unexpected NEO4J_URI scheme: {URI}"
+
+
+def test_env_file_has_no_utf8_bom():
+    """A UTF-8 BOM in .env breaks dotenv parsing — regression guard."""
+    env_path = ROOT / ".env"
+    if not env_path.exists():
+        pytest.skip(".env not present (fresh clone / CI)")
+    first_bytes = env_path.read_bytes()[:3]
+    assert first_bytes != b"\xef\xbb\xbf", (
+        ".env starts with a UTF-8 BOM; re-save it without BOM or dotenv parsing breaks"
+    )
+
+
+@requires_neo4j
+def test_neo4j_accepts_encrypted_connection():
+    """neo4j+s:// needs strict CA verification; +ssc:// keeps TLS but trusts
+    self-signed certs (AuraDB free tier). Assert a real RETURN 1 round-trip."""
+    from neo4j import GraphDatabase
+
+    ssc_uri = URI.replace("neo4j+s://", "neo4j+ssc://").replace("bolt+s://", "bolt+ssc://")
+    driver = GraphDatabase.driver(ssc_uri, auth=(USER, PASSWORD))
+    try:
+        driver.verify_connectivity()
+        with driver.session() as session:
+            record = session.run("RETURN 1 AS one").single()
+            assert record is not None
+            assert record["one"] == 1
+    finally:
+        driver.close()
