@@ -1,12 +1,70 @@
-"""Pytest suite for ingestion/ingest_to_neo4j.py — node classification, no DB.
-
-All functions tested here are pure (classify_node, normalize_name,
-TICKET_PATTERN), so the suite runs fully offline with no Neo4j instance.
+"""Pytest suite for ingestion/ingest_to_neo4j.py — node classification,
+driver URI handling, and early-exit paths. No live Neo4j required.
 """
 
 import ingest_to_neo4j as ing
 
 import pytest
+
+
+class TestDriverUri:
+    """ingest() downgrades bolt+s:// to bolt+ssc:// so Microsoft Store Python
+    (no default trust store) can still connect with TLS but without CA
+    verification. Regression guard: the converted URI must be the one actually
+    handed to GraphDatabase.driver (it was silently discarded by a duplicate
+    driver construction once)."""
+
+    def test_bolt_s_is_downgraded_to_ssc(self, monkeypatch, tmp_path):
+        captured = {}
+
+        def fake_driver(uri, **kwargs):
+            captured["uri"] = uri
+
+            class FakeDriver:
+                def verify_connectivity(self):
+                    raise RuntimeError("stop before real I/O")
+
+                def close(self):
+                    pass
+
+            return FakeDriver()
+
+        monkeypatch.setattr(ing.GraphDatabase, "driver", staticmethod(fake_driver))
+        triples = tmp_path / "triples.json"
+        triples.write_text("[]")
+        monkeypatch.setenv("NEO4J_URI", "bolt+s://example.databases.neo4j.io:7687")
+        monkeypatch.setenv("NEO4J_PASSWORD", "secret")
+
+        with pytest.raises(SystemExit):
+            ing.ingest(triples)
+
+        assert captured["uri"] == "bolt+ssc://example.databases.neo4j.io:7687"
+
+    def test_plain_bolt_uri_is_untouched(self, monkeypatch, tmp_path):
+        captured = {}
+
+        def fake_driver(uri, **kwargs):
+            captured["uri"] = uri
+
+            class FakeDriver:
+                def verify_connectivity(self):
+                    raise RuntimeError("stop before real I/O")
+
+                def close(self):
+                    pass
+
+            return FakeDriver()
+
+        monkeypatch.setattr(ing.GraphDatabase, "driver", staticmethod(fake_driver))
+        triples = tmp_path / "triples.json"
+        triples.write_text("[]")
+        monkeypatch.setenv("NEO4J_URI", "bolt://localhost:7687")
+        monkeypatch.setenv("NEO4J_PASSWORD", "secret")
+
+        with pytest.raises(SystemExit):
+            ing.ingest(triples)
+
+        assert captured["uri"] == "bolt://localhost:7687"
 
 
 class TestClassifyNode:
@@ -52,6 +110,7 @@ class TestNormalizeName:
 
 
 class TestTicketPattern:
+
     def test_fullmatch_semantics(self):
         assert ing.TICKET_PATTERN.fullmatch("CHRONO-109")
         assert not ing.TICKET_PATTERN.fullmatch("CHRONO-")
