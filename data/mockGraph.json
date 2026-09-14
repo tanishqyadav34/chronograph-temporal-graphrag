@@ -1,0 +1,986 @@
+{
+  "graph": {
+    "nodes": [
+      {
+        "id": "person:Eve",
+        "label": "Eve",
+        "type": "person",
+        "color": "#0d9488"
+      },
+      {
+        "id": "ticket:CHRONO-109",
+        "label": "CHRONO-109",
+        "type": "ticket",
+        "color": "#818cf8",
+        "detail": "Draft IAM mapping criteria AWS to GCP"
+      },
+      {
+        "id": "person:Bob",
+        "label": "Bob",
+        "type": "person",
+        "color": "#0d9488"
+      },
+      {
+        "id": "ticket:CHRONO-102",
+        "label": "CHRONO-102",
+        "type": "ticket",
+        "color": "#818cf8",
+        "detail": "Assess Database Migration Risk from RDS PostgreSQL to GCP Cloud SQL"
+      },
+      {
+        "id": "person:Charlie",
+        "label": "Charlie",
+        "type": "person",
+        "color": "#0d9488"
+      },
+      {
+        "id": "person:Dave",
+        "label": "Dave",
+        "type": "person",
+        "color": "#0d9488"
+      },
+      {
+        "id": "ticket:CHRONO-107",
+        "label": "CHRONO-107",
+        "type": "ticket",
+        "color": "#818cf8",
+        "detail": "Review AWS S3 data backup size and transfer speed limits"
+      },
+      {
+        "id": "tech:GCP",
+        "label": "GCP",
+        "type": "technology",
+        "color": "#6366f1"
+      },
+      {
+        "id": "tech:GCP BigQuery",
+        "label": "GCP BigQuery",
+        "type": "technology",
+        "color": "#6366f1"
+      },
+      {
+        "id": "ticket:CHRONO-106",
+        "label": "CHRONO-106",
+        "type": "ticket",
+        "color": "#818cf8",
+        "detail": "Draft GCP Landing Zone security requirements template"
+      },
+      {
+        "id": "person:Alice",
+        "label": "Alice",
+        "type": "person",
+        "color": "#0d9488"
+      },
+      {
+        "id": "tech:database risk analysis",
+        "label": "database risk analysis",
+        "type": "technology",
+        "color": "#6366f1"
+      },
+      {
+        "id": "ticket:CHRONO-101",
+        "label": "CHRONO-101",
+        "type": "ticket",
+        "color": "#818cf8",
+        "detail": "Research AWS vs GCP Migration Costs and Performance Benefits"
+      },
+      {
+        "id": "ticket:CHRONO-104",
+        "label": "CHRONO-104",
+        "type": "ticket",
+        "color": "#818cf8",
+        "detail": "Measure Network Latency between AWS VPC and GCP VPC"
+      },
+      {
+        "id": "ticket:CHRONO-108",
+        "label": "CHRONO-108",
+        "type": "ticket",
+        "color": "#818cf8",
+        "detail": "Document GKE container registry migration steps"
+      },
+      {
+        "id": "ticket:CHRONO-103",
+        "label": "CHRONO-103",
+        "type": "ticket",
+        "color": "#818cf8",
+        "detail": "Create GCP Proof-of-Concept Project & Structure"
+      },
+      {
+        "id": "ticket:CHRONO-105",
+        "label": "CHRONO-105",
+        "type": "ticket",
+        "color": "#818cf8",
+        "detail": "Hold Architecture Review for GCP Migration Plan"
+      },
+      {
+        "id": "tech:network latency",
+        "label": "network latency",
+        "type": "technology",
+        "color": "#6366f1"
+      },
+      {
+        "id": "tech:Terraform",
+        "label": "Terraform",
+        "type": "technology",
+        "color": "#6366f1"
+      },
+      {
+        "id": "tech:CloudFormation",
+        "label": "CloudFormation",
+        "type": "technology",
+        "color": "#6366f1"
+      },
+      {
+        "id": "tech:Dave",
+        "label": "Dave",
+        "type": "technology",
+        "color": "#6366f1"
+      },
+      {
+        "id": "tech:Eve",
+        "label": "Eve",
+        "type": "technology",
+        "color": "#6366f1"
+      },
+      {
+        "id": "ticket:CHRONO-207",
+        "label": "CHRONO-207",
+        "type": "ticket",
+        "color": "#818cf8",
+        "detail": "Validate workload identity credential rotation"
+      },
+      {
+        "id": "ticket:CHRONO-208",
+        "label": "CHRONO-208",
+        "type": "ticket",
+        "color": "#818cf8",
+        "detail": "Setup GCP Cloud NAT rules for GKE private nodes"
+      },
+      {
+        "id": "tech:Charlie",
+        "label": "Charlie",
+        "type": "technology",
+        "color": "#6366f1"
+      },
+      {
+        "id": "tech:benchmark for GCP Memorystore Redis tier",
+        "label": "benchmark for GCP Memoryst…",
+        "type": "technology",
+        "color": "#6366f1"
+      },
+      {
+        "id": "tech:Bob",
+        "label": "Bob",
+        "type": "technology",
+        "color": "#6366f1"
+      },
+      {
+        "id": "tech:PG logical replication",
+        "label": "PG logical replication",
+        "type": "technology",
+        "color": "#6366f1"
+      },
+      {
+        "id": "tech:PostgreSQL config",
+        "label": "PostgreSQL config",
+        "type": "technology",
+        "color": "#6366f1"
+      },
+      {
+        "id": "tech:logical replication",
+        "label": "logical replication",
+        "type": "technology",
+        "color": "#6366f1"
+      },
+      {
+        "id": "tech:AWS side",
+        "label": "AWS side",
+        "type": "technology",
+        "color": "#6366f1"
+      },
+      {
+        "id": "tech:Cloud SQL PostgreSQL instance",
+        "label": "Cloud SQL PostgreSQL insta…",
+        "type": "technology",
+        "color": "#6366f1"
+      },
+      {
+        "id": "ticket:CHRONO-303",
+        "label": "CHRONO-303",
+        "type": "ticket",
+        "color": "#818cf8",
+        "detail": "Deploy Core API service to GCP staging GKE"
+      },
+      {
+        "id": "ticket:CHRONO-307",
+        "label": "CHRONO-307",
+        "type": "ticket",
+        "color": "#818cf8",
+        "detail": "Establish GCP alert manager dashboard and slack hooks"
+      },
+      {
+        "id": "tech:GCP GKE clusters",
+        "label": "GCP GKE clusters",
+        "type": "technology",
+        "color": "#6366f1"
+      },
+      {
+        "id": "tech:AWS resources",
+        "label": "AWS resources",
+        "type": "technology",
+        "color": "#6366f1"
+      },
+      {
+        "id": "ticket:CHRONO-308",
+        "label": "CHRONO-308",
+        "type": "ticket",
+        "color": "#818cf8",
+        "detail": "Verify GCP BigQuery raw data loads from old S3 logs"
+      },
+      {
+        "id": "ticket:CHRONO-304",
+        "label": "CHRONO-304",
+        "type": "ticket",
+        "color": "#818cf8",
+        "detail": "Execute DB dry-run replication and verify lag"
+      },
+      {
+        "id": "ticket:CHRONO-302",
+        "label": "CHRONO-302",
+        "type": "ticket",
+        "color": "#818cf8",
+        "detail": "Verify connection pooling and performance on Cloud SQL"
+      },
+      {
+        "id": "tech:AWS IAM teardown scripts",
+        "label": "AWS IAM teardown scripts",
+        "type": "technology",
+        "color": "#6366f1"
+      },
+      {
+        "id": "tech:AWS teardown utility for EC2, RDS, and VPC cleanup",
+        "label": "AWS teardown utility for E…",
+        "type": "technology",
+        "color": "#6366f1"
+      },
+      {
+        "id": "ticket:CHRONO-301",
+        "label": "CHRONO-301",
+        "type": "ticket",
+        "color": "#818cf8",
+        "detail": "Implement DB switchover automation scripts"
+      },
+      {
+        "id": "ticket:CHRONO-305",
+        "label": "CHRONO-305",
+        "type": "ticket",
+        "color": "#818cf8",
+        "detail": "Update DNS and cutover traffic to GCP GKE Ingress"
+      },
+      {
+        "id": "tech:AWS resources cleanup and archive old S3 buckets",
+        "label": "AWS resources cleanup and …",
+        "type": "technology",
+        "color": "#6366f1"
+      }
+    ],
+    "links": [
+      {
+        "source": "person:Eve",
+        "target": "ticket:CHRONO-109",
+        "label": "assigned to",
+        "sourceId": "rec_001"
+      },
+      {
+        "source": "person:Bob",
+        "target": "ticket:CHRONO-102",
+        "label": "assigned to",
+        "sourceId": "rec_002"
+      },
+      {
+        "source": "person:Eve",
+        "target": "ticket:CHRONO-107",
+        "label": "assigned to",
+        "sourceId": "rec_006"
+      },
+      {
+        "source": "person:Dave",
+        "target": "tech:GCP",
+        "label": "argued against",
+        "sourceId": "rec_007"
+      },
+      {
+        "source": "person:Charlie",
+        "target": "tech:GCP BigQuery",
+        "label": "mentioned",
+        "sourceId": "rec_008"
+      },
+      {
+        "source": "person:Dave",
+        "target": "ticket:CHRONO-106",
+        "label": "assigned to",
+        "sourceId": "rec_011"
+      },
+      {
+        "source": "person:Bob",
+        "target": "tech:database risk analysis",
+        "label": "mentioned",
+        "sourceId": "rec_012"
+      },
+      {
+        "source": "person:Bob",
+        "target": "tech:database risk analysis",
+        "label": "mentioned",
+        "sourceId": "rec_013"
+      },
+      {
+        "source": "person:Alice",
+        "target": "ticket:CHRONO-101",
+        "label": "assigned to",
+        "sourceId": "rec_014"
+      },
+      {
+        "source": "person:Charlie",
+        "target": "ticket:CHRONO-101",
+        "label": "mentioned",
+        "sourceId": "rec_014"
+      },
+      {
+        "source": "person:Bob",
+        "target": "ticket:CHRONO-104",
+        "label": "assigned to",
+        "sourceId": "rec_019"
+      },
+      {
+        "source": "person:Bob",
+        "target": "ticket:CHRONO-104",
+        "label": "resolved",
+        "sourceId": "rec_019"
+      },
+      {
+        "source": "person:Alice",
+        "target": "tech:GCP",
+        "label": "mentioned",
+        "sourceId": "rec_020"
+      },
+      {
+        "source": "person:Alice",
+        "target": "ticket:CHRONO-108",
+        "label": "resolved",
+        "sourceId": "rec_021"
+      },
+      {
+        "source": "person:Charlie",
+        "target": "ticket:CHRONO-103",
+        "label": "resolved",
+        "sourceId": "rec_023"
+      },
+      {
+        "source": "person:Alice",
+        "target": "ticket:CHRONO-105",
+        "label": "resolved",
+        "sourceId": "rec_024"
+      },
+      {
+        "source": "person:Eve",
+        "target": "tech:network latency",
+        "label": "mentioned",
+        "sourceId": "rec_025"
+      },
+      {
+        "source": "person:Eve",
+        "target": "tech:network latency",
+        "label": "mentioned",
+        "sourceId": "rec_026"
+      },
+      {
+        "source": "person:Charlie",
+        "target": "tech:Terraform",
+        "label": "advocated for",
+        "sourceId": "rec_031"
+      },
+      {
+        "source": "person:Charlie",
+        "target": "tech:GCP",
+        "label": "mentioned",
+        "sourceId": "rec_031"
+      },
+      {
+        "source": "person:Charlie",
+        "target": "tech:CloudFormation",
+        "label": "mentioned",
+        "sourceId": "rec_031"
+      },
+      {
+        "source": "person:Alice",
+        "target": "tech:Dave",
+        "label": "assigned to",
+        "sourceId": "rec_033"
+      },
+      {
+        "source": "person:Bob",
+        "target": "tech:Eve",
+        "label": "assigned to",
+        "sourceId": "rec_034"
+      },
+      {
+        "source": "person:Dave",
+        "target": "tech:Terraform",
+        "label": "argued against",
+        "sourceId": "rec_038"
+      },
+      {
+        "source": "person:Dave",
+        "target": "tech:CloudFormation",
+        "label": "mentioned",
+        "sourceId": "rec_038"
+      },
+      {
+        "source": "person:Alice",
+        "target": "tech:Terraform",
+        "label": "mentioned",
+        "sourceId": "rec_039"
+      },
+      {
+        "source": "person:Alice",
+        "target": "tech:Eve",
+        "label": "mentioned",
+        "sourceId": "rec_039"
+      },
+      {
+        "source": "person:Dave",
+        "target": "tech:GCP",
+        "label": "mentioned",
+        "sourceId": "rec_040"
+      },
+      {
+        "source": "person:Dave",
+        "target": "tech:Eve",
+        "label": "mentioned",
+        "sourceId": "rec_040"
+      },
+      {
+        "source": "person:Dave",
+        "target": "ticket:CHRONO-207",
+        "label": "assigned to",
+        "sourceId": "rec_041"
+      },
+      {
+        "source": "person:Alice",
+        "target": "ticket:CHRONO-208",
+        "label": "assigned to",
+        "sourceId": "rec_046"
+      },
+      {
+        "source": "person:Charlie",
+        "target": "ticket:CHRONO-208",
+        "label": "assigned to",
+        "sourceId": "rec_046"
+      },
+      {
+        "source": "person:Alice",
+        "target": "tech:Charlie",
+        "label": "assigned to",
+        "sourceId": "rec_052"
+      },
+      {
+        "source": "person:Bob",
+        "target": "tech:benchmark for GCP Memorystore Redis tier",
+        "label": "committed code",
+        "sourceId": "rec_056"
+      },
+      {
+        "source": "person:Eve",
+        "target": "tech:benchmark for GCP Memorystore Redis tier",
+        "label": "committed code",
+        "sourceId": "rec_056"
+      },
+      {
+        "source": "person:Alice",
+        "target": "tech:Bob",
+        "label": "assigned to",
+        "sourceId": "rec_056"
+      },
+      {
+        "source": "person:Eve",
+        "target": "tech:PG logical replication",
+        "label": "mentioned",
+        "sourceId": "rec_057"
+      },
+      {
+        "source": "person:Eve",
+        "target": "tech:PG logical replication",
+        "label": "mentioned",
+        "sourceId": "rec_057"
+      },
+      {
+        "source": "person:Alice",
+        "target": "tech:Eve",
+        "label": "assigned to",
+        "sourceId": "rec_058"
+      },
+      {
+        "source": "person:Bob",
+        "target": "tech:PostgreSQL config",
+        "label": "mentioned",
+        "sourceId": "rec_060"
+      },
+      {
+        "source": "person:Bob",
+        "target": "tech:logical replication",
+        "label": "mentioned",
+        "sourceId": "rec_060"
+      },
+      {
+        "source": "person:Bob",
+        "target": "tech:AWS side",
+        "label": "mentioned",
+        "sourceId": "rec_060"
+      },
+      {
+        "source": "person:Bob",
+        "target": "tech:PostgreSQL config",
+        "label": "mentioned",
+        "sourceId": "rec_060"
+      },
+      {
+        "source": "person:Bob",
+        "target": "tech:logical replication",
+        "label": "mentioned",
+        "sourceId": "rec_060"
+      },
+      {
+        "source": "person:Bob",
+        "target": "tech:AWS side",
+        "label": "mentioned",
+        "sourceId": "rec_060"
+      },
+      {
+        "source": "person:Bob",
+        "target": "tech:Cloud SQL PostgreSQL instance",
+        "label": "committed code",
+        "sourceId": "rec_061"
+      },
+      {
+        "source": "person:Bob",
+        "target": "tech:Cloud SQL PostgreSQL instance",
+        "label": "mentioned",
+        "sourceId": "rec_061"
+      },
+      {
+        "source": "person:Alice",
+        "target": "tech:GCP",
+        "label": "mentioned",
+        "sourceId": "rec_062"
+      },
+      {
+        "source": "person:Charlie",
+        "target": "ticket:CHRONO-303",
+        "label": "assigned to",
+        "sourceId": "rec_063"
+      },
+      {
+        "source": "person:Charlie",
+        "target": "ticket:CHRONO-303",
+        "label": "resolved",
+        "sourceId": "rec_063"
+      },
+      {
+        "source": "person:Eve",
+        "target": "ticket:CHRONO-307",
+        "label": "assigned to",
+        "sourceId": "rec_066"
+      },
+      {
+        "source": "person:Eve",
+        "target": "ticket:CHRONO-307",
+        "label": "resolved",
+        "sourceId": "rec_066"
+      },
+      {
+        "source": "person:Charlie",
+        "target": "tech:GCP GKE clusters",
+        "label": "mentioned",
+        "sourceId": "rec_067"
+      },
+      {
+        "source": "person:Dave",
+        "target": "tech:AWS resources",
+        "label": "resolved",
+        "sourceId": "rec_068"
+      },
+      {
+        "source": "person:Charlie",
+        "target": "tech:GCP GKE clusters",
+        "label": "mentioned",
+        "sourceId": "rec_069"
+      },
+      {
+        "source": "person:Alice",
+        "target": "ticket:CHRONO-308",
+        "label": "assigned to",
+        "sourceId": "rec_070"
+      },
+      {
+        "source": "person:Alice",
+        "target": "ticket:CHRONO-308",
+        "label": "resolved",
+        "sourceId": "rec_070"
+      },
+      {
+        "source": "person:Alice",
+        "target": "tech:GCP BigQuery",
+        "label": "mentioned",
+        "sourceId": "rec_070"
+      },
+      {
+        "source": "person:Dave",
+        "target": "tech:AWS resources",
+        "label": "mentioned",
+        "sourceId": "rec_078"
+      },
+      {
+        "source": "person:Bob",
+        "target": "ticket:CHRONO-304",
+        "label": "assigned to",
+        "sourceId": "rec_081"
+      },
+      {
+        "source": "person:Alice",
+        "target": "ticket:CHRONO-304",
+        "label": "resolved",
+        "sourceId": "rec_081"
+      },
+      {
+        "source": "person:Alice",
+        "target": "tech:Bob",
+        "label": "mentioned",
+        "sourceId": "rec_081"
+      },
+      {
+        "source": "person:Bob",
+        "target": "ticket:CHRONO-302",
+        "label": "assigned to",
+        "sourceId": "rec_082"
+      },
+      {
+        "source": "person:Alice",
+        "target": "ticket:CHRONO-302",
+        "label": "resolved",
+        "sourceId": "rec_082"
+      },
+      {
+        "source": "person:Alice",
+        "target": "tech:Bob",
+        "label": "mentioned",
+        "sourceId": "rec_082"
+      },
+      {
+        "source": "person:Dave",
+        "target": "tech:AWS IAM teardown scripts",
+        "label": "committed code",
+        "sourceId": "rec_084"
+      },
+      {
+        "source": "person:Dave",
+        "target": "tech:AWS IAM teardown scripts",
+        "label": "mentioned",
+        "sourceId": "rec_084"
+      },
+      {
+        "source": "person:Dave",
+        "target": "tech:AWS teardown utility for EC2, RDS, and VPC cleanup",
+        "label": "committed code",
+        "sourceId": "rec_085"
+      },
+      {
+        "source": "person:Dave",
+        "target": "tech:AWS teardown utility for EC2, RDS, and VPC cleanup",
+        "label": "mentioned",
+        "sourceId": "rec_085"
+      },
+      {
+        "source": "person:Bob",
+        "target": "ticket:CHRONO-301",
+        "label": "assigned to",
+        "sourceId": "rec_087"
+      },
+      {
+        "source": "person:Alice",
+        "target": "ticket:CHRONO-301",
+        "label": "resolved",
+        "sourceId": "rec_087"
+      },
+      {
+        "source": "person:Alice",
+        "target": "tech:Bob",
+        "label": "mentioned",
+        "sourceId": "rec_087"
+      },
+      {
+        "source": "person:Bob",
+        "target": "ticket:CHRONO-305",
+        "label": "assigned to",
+        "sourceId": "rec_088"
+      },
+      {
+        "source": "person:Alice",
+        "target": "ticket:CHRONO-305",
+        "label": "resolved",
+        "sourceId": "rec_088"
+      },
+      {
+        "source": "person:Charlie",
+        "target": "ticket:CHRONO-305",
+        "label": "assigned to",
+        "sourceId": "rec_088"
+      },
+      {
+        "source": "person:Alice",
+        "target": "tech:Bob",
+        "label": "mentioned",
+        "sourceId": "rec_088"
+      },
+      {
+        "source": "person:Alice",
+        "target": "tech:Charlie",
+        "label": "mentioned",
+        "sourceId": "rec_089"
+      },
+      {
+        "source": "person:Alice",
+        "target": "tech:Dave",
+        "label": "mentioned",
+        "sourceId": "rec_089"
+      },
+      {
+        "source": "person:Bob",
+        "target": "tech:AWS side",
+        "label": "argued against",
+        "sourceId": "rec_089"
+      },
+      {
+        "source": "person:Dave",
+        "target": "tech:AWS resources cleanup and archive old S3 buckets",
+        "label": "committed code",
+        "sourceId": "rec_090"
+      },
+      {
+        "source": "person:Dave",
+        "target": "tech:AWS resources cleanup and archive old S3 buckets",
+        "label": "mentioned",
+        "sourceId": "rec_090"
+      }
+    ]
+  },
+  "timeline": [
+    {
+      "id": "evt-1-rec_001",
+      "date": "Jan 2",
+      "title": "Draft IAM mapping criteria AWS to GCP",
+      "reference": "CHRONO-109",
+      "referenceType": "jira",
+      "sourceId": "rec_001"
+    },
+    {
+      "id": "evt-2-rec_004",
+      "date": "Jan 7",
+      "title": "I agree with Bob there. Run a POC before committing the team. I still ar…",
+      "reference": "Dave",
+      "referenceType": "slack",
+      "sourceId": "rec_004"
+    },
+    {
+      "id": "evt-3-rec_007",
+      "date": "Jan 10",
+      "title": "Redshift is working fine if we tune our distribution keys properly. Push…",
+      "reference": "Dave",
+      "referenceType": "slack",
+      "sourceId": "rec_007"
+    },
+    {
+      "id": "evt-4-rec_010",
+      "date": "Jan 17",
+      "title": "My biggest concern is the database migration. Moving our primary Postgre…",
+      "reference": "Bob",
+      "referenceType": "slack",
+      "sourceId": "rec_010"
+    },
+    {
+      "id": "evt-5-rec_013",
+      "date": "Jan 19",
+      "title": "Thanks Alice, will do. Bob, Cloud SQL has some great replication tools t…",
+      "reference": "Charlie",
+      "referenceType": "slack",
+      "sourceId": "rec_013"
+    },
+    {
+      "id": "evt-6-rec_016",
+      "date": "Jan 21",
+      "title": "chore: setup terraform remote state bucket in GCS",
+      "reference": "Charlie",
+      "referenceType": "github",
+      "sourceId": "rec_016"
+    },
+    {
+      "id": "evt-7-rec_019",
+      "date": "Jan 25",
+      "title": "Measure Network Latency between AWS VPC and GCP VPC",
+      "reference": "CHRONO-104",
+      "referenceType": "jira",
+      "sourceId": "rec_019"
+    },
+    {
+      "id": "evt-8-rec_022",
+      "date": "Feb 1",
+      "title": "GCP's IAM is completely different. In AWS, we have fine-grained control …",
+      "reference": "Dave",
+      "referenceType": "slack",
+      "sourceId": "rec_022"
+    },
+    {
+      "id": "evt-9-rec_025",
+      "date": "Feb 12",
+      "title": "I'd love to help on this check! I can help research the security/IAM map…",
+      "reference": "Eve",
+      "referenceType": "slack",
+      "sourceId": "rec_025"
+    },
+    {
+      "id": "evt-10-rec_028",
+      "date": "Feb 13",
+      "title": "test: add network benchmark script for AWS EC2 instance nodes",
+      "reference": "Dave",
+      "referenceType": "github",
+      "sourceId": "rec_028"
+    },
+    {
+      "id": "evt-11-rec_031",
+      "date": "Feb 15",
+      "title": "That is great news. I started setting up Terraform for our GCP foundatio…",
+      "reference": "Charlie",
+      "referenceType": "slack",
+      "sourceId": "rec_031"
+    },
+    {
+      "id": "evt-12-rec_034",
+      "date": "Feb 24",
+      "title": "Document PG version compatibility between RDS and GCP",
+      "reference": "CHRONO-206",
+      "referenceType": "jira",
+      "sourceId": "rec_034"
+    },
+    {
+      "id": "evt-13-rec_037",
+      "date": "Feb 26",
+      "title": "feat: add schema sync script to map RDS schema to Cloud SQL",
+      "reference": "Bob",
+      "referenceType": "github",
+      "sourceId": "rec_037"
+    },
+    {
+      "id": "evt-14-rec_040",
+      "date": "Mar 8",
+      "title": "Yeah, GCP uses workload identity federation. It's actually decent, thoug…",
+      "reference": "Dave",
+      "referenceType": "slack",
+      "sourceId": "rec_040"
+    },
+    {
+      "id": "evt-15-rec_043",
+      "date": "Mar 12",
+      "title": "Build GKE CI/CD templates in GitHub Actions",
+      "reference": "CHRONO-205",
+      "referenceType": "jira",
+      "sourceId": "rec_043"
+    },
+    {
+      "id": "evt-16-rec_046",
+      "date": "Mar 24",
+      "title": "Setup GCP Cloud NAT rules for GKE private nodes",
+      "reference": "CHRONO-208",
+      "referenceType": "jira",
+      "sourceId": "rec_046"
+    },
+    {
+      "id": "evt-17-rec_049",
+      "date": "Mar 29",
+      "title": "Sure, assign it to me. But I'm going to make sure the routing tables on …",
+      "reference": "Dave",
+      "referenceType": "slack",
+      "sourceId": "rec_049"
+    },
+    {
+      "id": "evt-18-rec_052",
+      "date": "Apr 15",
+      "title": "Set up GKE Cluster configuration with Terraform",
+      "reference": "CHRONO-204",
+      "referenceType": "jira",
+      "sourceId": "rec_052"
+    },
+    {
+      "id": "evt-19-rec_055",
+      "date": "Apr 18",
+      "title": "feat: create Postgres config checker for replication settings",
+      "reference": "Bob",
+      "referenceType": "github",
+      "sourceId": "rec_055"
+    },
+    {
+      "id": "evt-20-rec_058",
+      "date": "Apr 26",
+      "title": "Map AWS IAM Policies to GCP IAM Service Accounts",
+      "reference": "CHRONO-202",
+      "referenceType": "jira",
+      "sourceId": "rec_058"
+    },
+    {
+      "id": "evt-21-rec_061",
+      "date": "Apr 28",
+      "title": "Database cutover complete. Cloud SQL PostgreSQL instance promoted to pri…",
+      "reference": "Bob",
+      "referenceType": "slack",
+      "sourceId": "rec_061"
+    },
+    {
+      "id": "evt-22-rec_064",
+      "date": "May 5",
+      "title": "test: add connection pool validation tests to GCP staging",
+      "reference": "Eve",
+      "referenceType": "github",
+      "sourceId": "rec_064"
+    },
+    {
+      "id": "evt-23-rec_067",
+      "date": "May 13",
+      "title": "ci: update deployment pipelines to target GCP GKE clusters",
+      "reference": "Charlie",
+      "referenceType": "github",
+      "sourceId": "rec_067"
+    },
+    {
+      "id": "evt-24-rec_070",
+      "date": "May 18",
+      "title": "Verify GCP BigQuery raw data loads from old S3 logs",
+      "reference": "CHRONO-308",
+      "referenceType": "jira",
+      "sourceId": "rec_070"
+    },
+    {
+      "id": "evt-25-rec_073",
+      "date": "May 24",
+      "title": "Decommission AWS resources (EC2, RDS, VPC)",
+      "reference": "CHRONO-306",
+      "referenceType": "jira",
+      "sourceId": "rec_073"
+    },
+    {
+      "id": "evt-26-rec_076",
+      "date": "May 28",
+      "title": "Dry run database sync completed successfully. Zero replication lag after…",
+      "reference": "Bob",
+      "referenceType": "slack",
+      "sourceId": "rec_076"
+    }
+  ]
+}
