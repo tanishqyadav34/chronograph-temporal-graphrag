@@ -1,8 +1,10 @@
-# ChronoGraph CI: lint + typecheck + tests for both stacks.
+# ChronoGraph CI: lint + typecheck + tests + coverage + audits for both stacks.
 #
-# - Node job: ESLint, tsc --noEmit, Jest (lib + component tests)
-# - Python job: pytest over extraction/ and ingestion/ (offline; live Neo4j
-#   tests are opt-in via CHRONO_LIVE_NEO4J and stay skipped in CI)
+# - Node job: ESLint, tsc --noEmit, Jest with enforced 70% coverage thresholds,
+#   and an npm audit gate (allowlisted advisories via scripts/audit-check.mjs)
+# - Python job: pytest with coverage over extraction/ and ingestion/ (offline;
+#   live Neo4j tests are opt-in via CHRONO_LIVE_NEO4J and stay skipped in CI),
+#   pip check for environment consistency, and pip-audit for CVEs
 
 name: CI
 
@@ -32,8 +34,15 @@ jobs:
       - name: Typecheck
         run: npx tsc --noEmit
 
-      - name: Test (Jest)
+      # Jest runs with collectCoverage + coverageThreshold (70% global).
+      - name: Test (Jest, coverage gate)
         run: npm test
+
+      # Fails on any high/critical advisory not documented in
+      # scripts/audit-allowlist.json (10 reviewed next@14 advisories that are
+      # only fixed by the breaking Next 16 migration).
+      - name: Dependency audit (npm)
+        run: node scripts/audit-check.mjs
 
   python:
     name: Test (Python)
@@ -47,11 +56,24 @@ jobs:
           cache: pip
 
       - name: Install dependencies
-        run: pip install -r requirements-dev.txt
+        run: |
+          python -m pip install --upgrade pip
+          pip install -r requirements-dev.txt
 
-      - name: Test (pytest)
-        # No CHRONO_LIVE_NEO4J here: live Neo4j tests stay skipped in CI.
-        run: pytest extraction/ ingestion/ -q
+      # Catches broken/ conflicting dependency resolution after install.
+      - name: Dependency consistency check
+        run: pip check
+
+      # Coverage thresholds come from .coveragerc (fail_under = 30, offline
+      # baseline — live Neo4j tests stay skipped in CI).
+      - name: Test (pytest, coverage gate)
+        run: pytest extraction/ ingestion/ -q --cov=extraction --cov=ingestion
+
+      # Advisory audit for the Python dependency set.
+      - name: Dependency audit (pip-audit)
+        run: |
+          pip install pip-audit
+          pip-audit --skip-editable -r requirements.txt
 
   docker:
     name: Docker build smoke test
