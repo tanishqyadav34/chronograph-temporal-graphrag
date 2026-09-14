@@ -175,3 +175,24 @@ describe("generateNarrative", () => {
     expect(res.refs.get("rec_001")).toBe("2023-01-01T00:00:00Z");
   });
 });
+
+describe("classifyQuestion", () => {
+  it.each([
+    "Why did the team abandon the old pipeline?",
+    "How did the migration go overall?",
+    "What happened with the database cutover?",
+    "Give me a timeline of the rollout",
+    "Summarize the whole picture",
+  ])("classifies %s as synthesis", (q) => {
+    expect(classifyQuestion(q)).toBe("synthesis");
+  });
+
+  it.each([
+    "Who argued against Cloud SQL?",
+    "What did Dave work on?",
+    "Who committed code for Terraform?",
+    "Is Alice comfortable with GCP?",
+  ])("classifies %s as simple", (q) => {
+    expect(classifyQuestion(q)).toBe("simple");
+  });
+});
