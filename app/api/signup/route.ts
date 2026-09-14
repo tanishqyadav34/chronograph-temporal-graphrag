@@ -1,39 +1,23 @@
 import { NextRequest, NextResponse } from "next/server";
 import bcrypt from "bcryptjs";
 import { runQuery } from "@/lib/neo4j";
+import { SignupRequestSchema, parseBody } from "@/lib/validation";
+import { logger } from "@/lib/logger";
 
-// ── Validation ───────────────────────────────────────────────────────────────
-
-const EMAIL_RE = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
-const MIN_PASSWORD_LENGTH = 8;
+const log = logger("chrono-auth");
 
 // ── Route ────────────────────────────────────────────────────────────────────
 
 export async function POST(req: NextRequest) {
   try {
+    // Schema-validated request boundary — malformed input is rejected with 400
+    // before any handler logic runs.
     const body = await req.json().catch(() => null);
-    const name = typeof body?.name === "string" ? body.name.trim() : "";
-    const email = typeof body?.email === "string" ? body.email.trim().toLowerCase() : "";
-    const password = typeof body?.password === "string" ? body.password : "";
-
-    if (!name) {
-      return NextResponse.json({ error: "Name is required." }, { status: 400 });
+    const parsed = parseBody(SignupRequestSchema, body);
+    if (!parsed.success) {
+      return NextResponse.json({ error: parsed.errors[0] }, { status: 400 });
     }
-    if (name.length > 80) {
-      return NextResponse.json({ error: "Name is too long." }, { status: 400 });
-    }
-    if (!EMAIL_RE.test(email)) {
-      return NextResponse.json({ error: "Please enter a valid email address." }, { status: 400 });
-    }
-    if (password.length < MIN_PASSWORD_LENGTH) {
-      return NextResponse.json(
-        { error: `Password must be at least ${MIN_PASSWORD_LENGTH} characters.` },
-        { status: 400 }
-      );
-    }
-    if (password.length > 200) {
-      return NextResponse.json({ error: "Password is too long." }, { status: 400 });
-    }
+    const { name, email, password } = parsed.data;
 
     const passwordHash = await bcrypt.hash(password, 10);
     const createdAt = new Date().toISOString();
@@ -55,10 +39,10 @@ export async function POST(req: NextRequest) {
       );
     }
 
-    console.log(`[chrono-auth] new user created: ${email}`);
+    log.info(`new user created`, { email });
     return NextResponse.json({ ok: true, email }, { status: 201 });
   } catch (err) {
-    console.error("[chrono-auth] signup failed:", err);
+    log.error("signup failed", { error: err instanceof Error ? err.message : String(err) });
     return NextResponse.json({ error: "Signup failed. Please try again." }, { status: 500 });
   }
 }
