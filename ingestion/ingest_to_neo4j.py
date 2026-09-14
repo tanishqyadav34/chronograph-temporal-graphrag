@@ -117,8 +117,6 @@ def ingest(triples_path: str | Path, limit: int | None = None,
         print(f"[SSL] Using neo4j+ssc:// (encrypted, self-signed certs accepted)")
 
     driver = GraphDatabase.driver(driver_uri, **driver_kwargs)
-
-    driver = GraphDatabase.driver(uri, **driver_kwargs)
     try:
         driver.verify_connectivity()
     except Exception as e:

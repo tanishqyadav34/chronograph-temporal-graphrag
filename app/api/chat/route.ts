@@ -9,8 +9,10 @@ import {
   sortByTimestamp,
   MAX_CONTEXT_RECORDS,
 } from "@/lib/graphResults";
-import { AttachmentInput, handleAttachment } from "@/lib/attachments";
+import { handleAttachment } from "@/lib/attachments";
+import type { AttachmentPayload } from "@/lib/types";
 import { generateNarrative } from "@/lib/narrative";
+import { ChatRequestSchema, parseBody } from "@/lib/validation";
 import { logger } from "@/lib/logger";
 
 const log = logger("chrono-cypher");
@@ -169,17 +171,15 @@ async function handleSynthesis(question: string): Promise<NextResponse> {
 export async function POST(req: NextRequest) {
   try {
     const body = await req.json().catch(() => null);
-    const question = typeof body?.question === "string" ? body.question.trim() : "";
 
-    if (!question) {
-      return NextResponse.json({ error: "Question is required" }, { status: 400 });
+    // Schema-validated request boundary — malformed input is rejected with 400
+    // before any handler logic runs.
+    const parsed = parseBody(ChatRequestSchema, body);
+    if (!parsed.success) {
+      return NextResponse.json({ error: parsed.errors[0] }, { status: 400 });
     }
-    if (question.length > 2000) {
-      return NextResponse.json(
-        { error: "Question is too long (max 2000 characters)" },
-        { status: 400 }
-      );
-    }
+    const { question, attachment } = parsed.data;
+
     if (!process.env.GROK_API_KEY) {
       return NextResponse.json(
         { error: "GROK_API_KEY is not configured. Add it to .env" },
@@ -191,15 +191,15 @@ export async function POST(req: NextRequest) {
 
     // 0a) File-attachment questions bypass the graph entirely: the document
     //     itself is the context.
-    const attachment: AttachmentInput | undefined = body?.attachment as AttachmentInput | undefined;
-    if (attachment && typeof attachment === "object") {
+    const attachmentPayload: AttachmentPayload | undefined = attachment ?? undefined;
+    if (attachmentPayload) {
       log.debug(`attachment received`, {
-        name: attachment.name,
-        type: attachment.type,
-        hasContent: typeof attachment.content === "string",
-        hasBase64: typeof attachment.base64 === "string",
+        name: attachmentPayload.name,
+        type: attachmentPayload.type,
+        hasContent: typeof attachmentPayload.content === "string",
+        hasBase64: typeof attachmentPayload.base64 === "string",
       });
-      return handleAttachment(question, attachment);
+      return handleAttachment(question, attachmentPayload);
     }
 
     // 0) Two-stage retrieval: classify the question first.

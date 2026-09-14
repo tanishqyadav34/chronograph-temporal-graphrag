@@ -1,0 +1,13 @@
+# Coverage configuration for pytest-cov.
+#
+# Live-service tests are skipped by default (CHRONO_LIVE_NEO4J), so the
+# threshold reflects what an offline `pytest` run can genuinely cover.
+[run]
+omit =
+    */test_*.py
+    */conftest.py
+
+[report]
+fail_under = 30
+show_missing = False
+precision = 1

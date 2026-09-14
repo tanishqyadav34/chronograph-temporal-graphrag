@@ -1,0 +1,95 @@
+{
+  "_comment": "Documented allowlist for npm advisories accepted after review. Every entry must name the advisory, the reason it is accepted, and the condition for removal. Anything NOT in this list fails CI (scripts/audit-check.mjs).",
+  "allowlist": [
+    {
+      "id": 1193677,
+      "url": "https://github.com/advisories/GHSA-p293-qw3h-jr36",
+      "package": "next",
+      "severity": "critical",
+      "title": "Unauthenticated Remote Code Execution on windows-hosted servers",
+      "reason": "Only fixed in Next 16 (breaking React 19 migration). The production deployment target is Linux containers (Dockerfile uses node:20-alpine); this advisory requires a Windows-hosted server.",
+      "removal_condition": "Migrate to next@16+ or confirm the app is never served from a Windows host and drop the entry."
+    },
+    {
+      "id": 1193733,
+      "url": "https://github.com/advisories/GHSA-2xp9-vwfh-vxw4",
+      "package": "next",
+      "severity": "critical",
+      "title": "Unauthenticated Remote Code Execution in Image Optimization API when AVIF files are used",
+      "reason": "Mitigated in code: images.unoptimized=true in next.config.mjs disables the Image Optimization API entirely (the app renders no <Image> bitmaps).",
+      "removal_condition": "Migrate to next@16+."
+    },
+    {
+      "id": 1112653,
+      "url": "https://github.com/advisories/GHSA-h25m-26qc-wcjf",
+      "package": "next",
+      "severity": "high",
+      "title": "HTTP request deserialization can lead to DoS when using insecure React Server Components",
+      "reason": "Only fixed in Next 16; accepted for the Next 14 App Router demo scope.",
+      "removal_condition": "Migrate to next@16+."
+    },
+    {
+      "id": 1116376,
+      "url": "https://github.com/advisories/GHSA-q4gf-8mx6-v5v3",
+      "package": "next",
+      "severity": "high",
+      "title": "Denial of Service with Server Components",
+      "reason": "Only fixed in Next 16; accepted for the Next 14 demo scope.",
+      "removal_condition": "Migrate to next@16+."
+    },
+    {
+      "id": 1117931,
+      "url": "https://github.com/advisories/GHSA-8h8q-6873-q5fj",
+      "package": "next",
+      "severity": "high",
+      "title": "Vulnerable to Denial of Service with Server Components",
+      "reason": "Only fixed in Next 16; accepted for the Next 14 demo scope.",
+      "removal_condition": "Migrate to next@16+."
+    },
+    {
+      "id": 1118954,
+      "url": "https://github.com/advisories/GHSA-c4j6-fc7j-m34r",
+      "package": "next",
+      "severity": "high",
+      "title": "Server-side request forgery in applications using WebSocket upgrades",
+      "reason": "The app uses no WebSocket upgrades.",
+      "removal_condition": "Migrate to next@16+."
+    },
+    {
+      "id": 1118962,
+      "url": "https://github.com/advisories/GHSA-f82v-jwr5-mffw",
+      "package": "next",
+      "severity": "high",
+      "title": "Authorization Bypass in Next.js Middleware",
+      "reason": "Reviewed against middleware.ts: auth checks use token verification, not trust-the-header logic targeted by this bypass; accepted for demo scope.",
+      "removal_condition": "Migrate to next@16+ or re-verify middleware auth logic."
+    },
+    {
+      "id": 1124172,
+      "url": "https://github.com/advisories/GHSA-7m27-7ghc-44w9",
+      "package": "next",
+      "severity": "high",
+      "title": "Denial of Service in App Router using Server Actions",
+      "reason": "The app defines no Server Actions ('use server' functions); API routes only accept POST with validated JSON bodies.",
+      "removal_condition": "Migrate to next@16+."
+    },
+    {
+      "id": 1124185,
+      "url": "https://github.com/advisories/GHSA-g5qg-72qw-gw5v",
+      "package": "next",
+      "severity": "high",
+      "title": "Server-Side Request Forgery in Server Actions on custom servers",
+      "reason": "No Server Actions and no custom server are used.",
+      "removal_condition": "Migrate to next@16+."
+    },
+    {
+      "id": 1124193,
+      "url": "https://github.com/advisories/GHSA-p9j2-gv94-2wf4",
+      "package": "next",
+      "severity": "high",
+      "title": "Server-Side Request Forgery in rewrites via attacker-controlled destination hostname",
+      "reason": "next.config.mjs defines no rewrites/redirects.",
+      "removal_condition": "Migrate to next@16+."
+    }
+  ]
+}
