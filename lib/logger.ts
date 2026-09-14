@@ -1,51 +1,66 @@
 /**
  * logger.ts
  *
- * Minimal structured logger: one JSON object per line (easy to grep/ship),
+ * Structured logging via pino: one JSON object per line (easy to grep/ship),
  * level-filtered via LOG_LEVEL (debug|info|warn|error, default info), with an
- * optional `scope` tag so each subsystem can be filtered (e.g. chrono-cypher).
- * Wraps console so no new dependency is introduced.
+ * optional `scope` tag as a child binding so each subsystem can be filtered
+ * (e.g. chrono-cypher).
  */
+import pino, { type Logger } from "pino";
+import { Writable } from "stream";
 
 export type LogLevel = "debug" | "info" | "warn" | "error";
 
-const LEVELS: Record<LogLevel, number> = {
-  debug: 10,
-  info: 20,
-  warn: 30,
-  error: 40,
-};
+/** Writable that mirrors pino output onto process.stdout (spy-friendly). */
+const stdoutDestination = new Writable({
+  write(chunk, _encoding, callback) {
+    process.stdout.write(chunk);
+    callback();
+  },
+});
 
-function currentLevel(): number {
-  const raw = (process.env.LOG_LEVEL ?? "info").toLowerCase();
-  return LEVELS[(raw as LogLevel) in LEVELS ? (raw as LogLevel) : "info"];
+const root: Logger = pino(
+  {
+    level: normalizeLevel(process.env.LOG_LEVEL),
+    base: undefined, // omit pid/hostname for lean single-line records
+    timestamp: pino.stdTimeFunctions.isoTime,
+    formatters: {
+      level(label) {
+        return { level: label };
+      },
+    },
+  },
+  stdoutDestination
+);
+
+function normalizeLevel(raw: string | undefined): LogLevel {
+  const value = (raw ?? "info").toLowerCase();
+  return value === "debug" || value === "warn" || value === "error" ? value : "info";
 }
 
-function emit(level: LogLevel, scope: string | undefined, message: string, meta?: Record<string, unknown>): void {
-  if (LEVELS[level] < currentLevel()) return;
-
-  const entry: Record<string, unknown> = {
-    ts: new Date().toISOString(),
-    level,
-    msg: message,
-  };
-  if (scope) entry.scope = scope;
-  if (meta) entry.meta = meta;
-
-  const line = JSON.stringify(entry);
-  if (level === "error") console.error(line);
-  else if (level === "warn") console.warn(line);
-  else console.log(line);
+/** Re-target the root level at runtime (e.g. from tests or admin tooling). */
+export function setLogLevel(level: LogLevel): void {
+  root.level = level;
 }
+
+/** Message + optional structured-meta log function. */
+export type LogFn = (msg: string, meta?: Record<string, unknown>) => void;
 
 /** Create a scoped logger: const log = logger("chrono-cypher"); */
-export function logger(scope?: string) {
-  return {
-    debug: (msg: string, meta?: Record<string, unknown>) => emit("debug", scope, msg, meta),
-    info: (msg: string, meta?: Record<string, unknown>) => emit("info", scope, msg, meta),
-    warn: (msg: string, meta?: Record<string, unknown>) => emit("warn", scope, msg, meta),
-    error: (msg: string, meta?: Record<string, unknown>) => emit("error", scope, msg, meta),
-  };
+export function logger(scope?: string): {
+  debug: LogFn;
+  info: LogFn;
+  warn: LogFn;
+  error: LogFn;
+} {
+  const bound = scope ? root.child({ scope }) : root;
+  const make = (level: "debug" | "info" | "warn" | "error"): LogFn =>
+    (msg, meta) => {
+      // pino convention: (obj, msg) merges obj fields at the record top level
+      if (meta === undefined) bound[level](msg);
+      else bound[level](meta, msg);
+    };
+  return { debug: make("debug"), info: make("info"), warn: make("warn"), error: make("error") };
 }
 
 export default logger;
