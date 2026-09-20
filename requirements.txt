@@ -1,5 +1,5 @@
 # ChronoGraph Python runtime dependencies (extraction/ + ingestion/).
 # Pinned exactly so a fresh clone resolves the same versions CI tested.
-openai==3.13.0
+openai==3.14.1
 python-dotenv==1.2.3
 neo4j==6.3.0
